@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Fun Quiz – Units 1–4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #fdf2f8 0%, #e0f2fe 50%, #fef3c7 100%);
+            min-height: 100vh;
+        }
+        h1, h2, h3, .font-fun {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .bounce-hover:hover {
+            transform: translateY(-4px) scale(1.02);
+            transition: all 0.2s ease-in-out;
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="text-slate-700 flex flex-col min-h-screen">
+
+    <!-- Header Navigation Bar -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 px-4 py-3 border-b border-pink-100">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="app.goHome()">
+                <div class="w-10 h-10 bg-pink-400 rounded-full flex items-center justify-center text-white text-xl shadow-md">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-pink-500 tracking-wide">English Fun Quiz</h1>
+                    <p class="text-xs text-slate-400">Year 1 & 2 • Units 1–4</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button onclick="app.showTeacherModal()" class="bg-indigo-100 hover:bg-indigo-200 text-indigo-700 px-3.5 py-2 rounded-2xl text-sm font-semibold transition flex items-center space-x-2 shadow-sm">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span class="hidden sm:inline">Teacher Dashboard</span>
+                </button>
+                <button onclick="app.toggleSound()" id="soundToggleBtn" class="bg-amber-100 hover:bg-amber-200 text-amber-700 w-10 h-10 rounded-2xl flex items-center justify-center transition shadow-sm" title="Toggle Sound">
+                    <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow max-w-4xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-center items-center">
+        
+        <!-- SCREEN 1: WELCOME & PROFILE SETUP -->
+        <div id="screen-welcome" class="w-full bg-white/90 backdrop-blur rounded-3xl card-shadow p-6 sm:p-10 text-center border-4 border-pink-200 animate-float">
+            <div class="inline-block bg-pink-100 text-pink-500 px-4 py-1.5 rounded-full text-sm font-bold mb-4">
+                ✨ KPM Year 1 & 2 Syllabus (Pre-A1 to A1) ✨
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-bold text-slate-800 mb-3 font-fun">
+                Welcome to <span class="text-pink-500">English Fun Quiz!</span> 🎈
+            </h2>
+            <p class="text-slate-500 text-base sm:text-lg mb-8 max-w-xl mx-auto">
+                Let's practice English vocabulary, spelling, grammar, and listening with fun games!
+            </p>
+
+            <div class="bg-pink-50/50 p-6 rounded-2xl max-w-md mx-auto mb-8 border border-pink-100 text-left">
+                <label class="block text-sm font-bold text-slate-700 mb-2" for="pupilName">
+                    <i class="fa-solid fa-user-pen text-pink-400 mr-2"></i> Pupil's Name:
+                </label>
+                <input type="text" id="pupilName" placeholder="e.g. Aminah binti Ali" class="w-full px-4 py-3 rounded-xl border-2 border-pink-200 focus:border-pink-500 focus:outline-none bg-white text-slate-700 font-semibold mb-4 shadow-inner">
+                
+                <label class="block text-sm font-bold text-slate-700 mb-2" for="pupilClass">
+                    <i class="fa-solid fa-school text-blue-400 mr-2"></i> Class / Year:
+                </label>
+                <input type="text" id="pupilClass" placeholder="e.g. Year 2 Cemerlang" class="w-full px-4 py-3 rounded-xl border-2 border-blue-200 focus:border-blue-500 focus:outline-none bg-white text-slate-700 font-semibold shadow-inner">
+            </div>
+
+            <button onclick="app.startQuizSetup()" class="bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-bold text-xl px-10 py-4 rounded-2xl shadow-lg bounce-hover transition">
+                Let's Play! 🚀
+            </button>
+        </div>
+
+        <!-- SCREEN 2: MODE & UNIT SELECTION -->
+        <div id="screen-menu" class="w-full hidden space-y-6">
+            <div class="bg-white/90 backdrop-blur rounded-3xl card-shadow p-6 sm:p-8 border-4 border-blue-200">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 font-fun">Hello, <span id="displayPlayerName" class="text-blue-500">Pupil</span>! 👋</h2>
+                        <p class="text-slate-500 text-sm">Choose how you want to play today:</p>
+                    </div>
+                    <button onclick="app.goHome()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 px-3 py-1.5 rounded-xl font-semibold transition">
+                        Change Name
+                    </button>
+                </div>
+
+                <h3 class="font-bold text-slate-700 text-lg mb-3 flex items-center">
+                    <i class="fa-solid fa-gamepad text-indigo-400 mr-2"></i> Select Quiz Mode
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+                    <button onclick="app.setMode('unit')" id="mode-unit" class="mode-btn p-4 rounded-2xl border-2 border-pink-300 bg-pink-50 text-pink-700 font-bold text-sm flex flex-col items-center justify-center space-y-2 transition shadow-sm">
+                        <i class="fa-solid fa-book-open text-2xl"></i>
+                        <span>Choose a Unit</span>
+                    </button>
+                    <button onclick="app.setMode('mixed')" id="mode-mixed" class="mode-btn p-4 rounded-2xl border-2 border-slate-200 bg-white text-slate-600 font-bold text-sm flex flex-col items-center justify-center space-y-2 transition shadow-sm hover:border-blue-300">
+                        <i class="fa-solid fa-shuffle text-2xl text-blue-400"></i>
+                        <span>Mixed Challenge</span>
+                    </button>
+                    <button onclick="app.setMode('spelling')" id="mode-spelling" class="mode-btn p-4 rounded-2xl border-2 border-slate-200 bg-white text-slate-600 font-bold text-sm flex flex-col items-center justify-center space-y-2 transition shadow-sm hover:border-amber-300">
+                        <i class="fa-solid fa-spell-check text-2xl text-amber-400"></i>
+                        <span>Spelling Quiz</span>
+                    </button>
+                    <button onclick="app.setMode('listening')" id="mode-listening" class="mode-btn p-4 rounded-2xl border-2 border-slate-200 bg-white text-slate-600 font-bold text-sm flex flex-col items-center justify-center space-y-2 transition shadow-sm hover:border-emerald-300">
+                        <i class="fa-solid fa-headphones text-2xl text-emerald-400"></i>
+                        <span>Listening Mode</span>
+                    </button>
+                </div>
+
+                <div id="unit-selection-container">
+                    <h3 class="font-bold text-slate-700 text-lg mb-3 flex items-center">
+                        <i class="fa-solid fa-layer-group text-purple-400 mr-2"></i> Select Topic Unit
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div onclick="app.launchQuiz(1)" class="bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-pink-200 hover:border-pink-400 p-5 rounded-2xl cursor-pointer transition bounce-hover flex items-center space-x-4">
+                            <div class="w-14 h-14 bg-pink-400 text-white rounded-2xl flex items-center justify-center text-2xl font-bold shadow-md">
+                                <i class="fa-solid fa-pencil"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold text-pink-500 uppercase tracking-wider">Unit 1</span>
+                                <h4 class="text-lg font-bold text-slate-800 font-fun">At School</h4>
+                                <p class="text-xs text-slate-500">School objects, classroom rules, 'What's this?'</p>
+                            </div>
+                        </div>
+
+                        <div onclick="app.launchQuiz(2)" class="bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 hover:border-blue-400 p-5 rounded-2xl cursor-pointer transition bounce-hover flex items-center space-x-4">
+                            <div class="w-14 h-14 bg-blue-400 text-white rounded-2xl flex items-center justify-center text-2xl font-bold shadow-md">
+                                <i class="fa-solid fa-puzzle-piece"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold text-blue-500 uppercase tracking-wider">Unit 2</span>
+                                <h4 class="text-lg font-bold text-slate-800 font-fun">Let's Play!</h4>
+                                <p class="text-xs text-slate-500">Toys, shapes, numbers & counting</p>
+                            </div>
+                        </div>
+
+                        <div onclick="app.launchQuiz(3)" class="bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-amber-200 hover:border-amber-400 p-5 rounded-2xl cursor-pointer transition bounce-hover flex items-center space-x-4">
+                            <div class="w-14 h-14 bg-amber-400 text-white rounded-2xl flex items-center justify-center text-2xl font-bold shadow-md">
+                                <i class="fa-solid fa-paw"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Unit 3</span>
+                                <h4 class="text-lg font-bold text-slate-800 font-fun">Pet Show</h4>
+                                <p class="text-xs text-slate-500">Animals, likes/dislikes, prepositions (in, on, under)</p>
+                            </div>
+                        </div>
+
+                        <div onclick="app.launchQuiz(4)" class="bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-200 hover:border-emerald-400 p-5 rounded-2xl cursor-pointer transition bounce-hover flex items-center space-x-4">
+                            <div class="w-14 h-14 bg-emerald-400 text-white rounded-2xl flex items-center justify-center text-2xl font-bold shadow-md">
+                                <i class="fa-solid fa-apple-whole"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Unit 4</span>
+                                <h4 class="text-lg font-bold text-slate-800 font-fun">Lunchtime</h4>
+                                <p class="text-xs text-slate-500">Food, fruits, vegetables, 'I've got a sandwich'</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="start-action-container" class="mt-8 text-center hidden">
+                    <button onclick="app.launchQuiz(0)" class="bg-gradient-to-r from-blue-400 to-indigo-500 hover:from-blue-500 hover:to-indigo-600 text-white font-bold text-lg px-8 py-3.5 rounded-2xl shadow-lg bounce-hover transition">
+                        Start Challenge Now! 🌟
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN 3: QUIZ GAMEPLAY -->
+        <div id="screen-quiz" class="w-full hidden space-y-4">
+            <!-- Progress & Stats Bar -->
+            <div class="bg-white/90 backdrop-blur rounded-2xl p-4 card-shadow flex justify-between items-center border border-slate-100">
+                <div class="flex items-center space-x-3">
+                    <span id="quizBadge" class="bg-pink-100 text-pink-700 text-xs font-bold px-3 py-1.5 rounded-xl">Unit 1</span>
+                    <span class="text-sm font-bold text-slate-600">Question <span id="currentQNum">1</span> of <span id="totalQNum">10</span></span>
+                </div>
+                <div class="w-1/3 bg-slate-100 rounded-full h-3 overflow-hidden">
+                    <div id="progressBar" class="bg-pink-400 h-full w-0 transition-all duration-300"></div>
+                </div>
+                <div class="flex items-center space-x-1 bg-amber-50 text-amber-700 px-3 py-1.5 rounded-xl font-bold text-sm">
+                    <i class="fa-solid fa-star text-amber-500 mr-1"></i>
+                    <span id="currentScore">0</span> pts
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="bg-white/95 backdrop-blur rounded-3xl card-shadow p-6 sm:p-8 border-4 border-indigo-100">
+                
+                <!-- Listening Mode Trigger Header -->
+                <div id="listeningAudioPrompt" class="hidden mb-4 text-center bg-emerald-50 border border-emerald-200 p-4 rounded-2xl">
+                    <p class="text-sm font-bold text-emerald-800 mb-2">Listen to the word and choose the matching picture!</p>
+                    <button onclick="app.playCurrentAudioWord()" class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2.5 rounded-xl font-bold shadow-md transition bounce-hover inline-flex items-center space-x-2">
+                        <i class="fa-solid fa-volume-high text-lg"></i>
+                        <span>Play Audio Word 🔊</span>
+                    </button>
+                </div>
+
+                <!-- Question Title / Prompt -->
+                <div class="flex justify-between items-start mb-4">
+                    <h3 id="questionText" class="text-xl sm:text-2xl font-bold text-slate-800 font-fun">
+                        What's this?
+                    </h3>
+                    <button onclick="app.playQuestionAudio()" class="text-indigo-400 hover:text-indigo-600 bg-indigo-50 p-2.5 rounded-xl transition" title="Listen to question">
+                        <i class="fa-solid fa-volume-high text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Illustration Box -->
+                <div id="illustrationBox" class="w-full h-48 sm:h-56 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200 flex items-center justify-center mb-6 relative overflow-hidden">
+                    <!-- Dynamic SVG inserted here -->
+                </div>
+
+                <!-- Answer Choices (Exactly 3) -->
+                <div id="choicesContainer" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <!-- Dynamic Choice Buttons -->
+                </div>
+
+                <!-- Explanation / Feedback Box (Hidden initially) -->
+                <div id="feedbackBox" class="mt-6 p-4 rounded-2xl hidden transition-all">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 id="feedbackTitle" class="font-bold text-lg font-fun">Excellent! ⭐</h4>
+                        <button onclick="app.nextQuestion()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold px-6 py-2.5 rounded-xl text-sm shadow-md transition">
+                            Next Question <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                    <p id="feedbackExplanation" class="text-sm opacity-90"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN 4: RESULTS & REVIEW -->
+        <div id="screen-results" class="w-full hidden space-y-6">
+            <div class="bg-white/95 backdrop-blur rounded-3xl card-shadow p-6 sm:p-10 text-center border-4 border-amber-200">
+                <div class="w-20 h-20 bg-amber-100 text-amber-500 rounded-full flex items-center justify-center text-4xl mx-auto mb-4 shadow-inner">
+                    🏆
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-2 font-fun">Quiz Completed!</h2>
+                <p id="resultPlayerSummary" class="text-slate-500 mb-6">Great job completing the challenge!</p>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mb-8">
+                    <div class="bg-pink-50 p-4 rounded-2xl border border-pink-100">
+                        <span class="block text-xs font-bold text-pink-400 uppercase">Total Score</span>
+                        <span id="resScore" class="text-2xl font-bold text-pink-600 font-fun">0/10</span>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
+                        <span class="block text-xs font-bold text-blue-400 uppercase">Percentage</span>
+                        <span id="resPercentage" class="text-2xl font-bold text-blue-600 font-fun">0%</span>
+                    </div>
+                    <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
+                        <span class="block text-xs font-bold text-emerald-500 uppercase">Correct</span>
+                        <span id="resCorrect" class="text-2xl font-bold text-emerald-600 font-fun">0</span>
+                    </div>
+                    <div class="bg-rose-50 p-4 rounded-2xl border border-rose-100">
+                        <span class="block text-xs font-bold text-rose-400 uppercase">Incorrect</span>
+                        <span id="resIncorrect" class="text-2xl font-bold text-rose-600 font-fun">0</span>
+                    </div>
+                </div>
+
+                <div id="finalMessageBadge" class="p-4 rounded-2xl font-bold text-lg mb-8 max-w-lg mx-auto bg-amber-50 text-amber-800 border border-amber-200">
+                    🎉 Excellent work! You earned a gold star!
+                </div>
+
+                <!-- Review Section -->
+                <div class="text-left mb-8">
+                    <h3 class="font-bold text-slate-700 text-lg mb-4 flex items-center">
+                        <i class="fa-solid fa-clipboard-list text-indigo-400 mr-2"></i> Question Review
+                    </h3>
+                    <div id="reviewListContainer" class="space-y-3 max-h-80 overflow-y-auto pr-2">
+                        <!-- Review items populated dynamically -->
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button onclick="app.restartSameQuiz()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold px-6 py-3 rounded-2xl shadow-md transition bounce-hover">
+                        <i class="fa-solid fa-rotate-right mr-2"></i> Play Again
+                    </button>
+                    <button onclick="app.returnToMenu()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-2xl shadow-md transition bounce-hover">
+                        <i class="fa-solid fa-th-large mr-2"></i> Choose Another Unit
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- TEACHER DASHBOARD MODAL -->
+    <div id="teacherModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl card-shadow max-w-3xl w-full max-h-[90vh] flex flex-col overflow-hidden border-4 border-indigo-200 animate-float" style="animation: none;">
+            <div class="bg-indigo-500 p-5 text-white flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <i class="fa-solid fa-chalkboard-user text-2xl"></i>
+                    <h3 class="text-xl font-bold font-fun">Teacher Dashboard & Analytics</h3>
+                </div>
+                <button onclick="app.hideTeacherModal()" class="w-9 h-9 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto space-y-6 flex-grow">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-lg">Pupil Quiz Results</h4>
+                        <p class="text-xs text-slate-500">Synced securely with Firebase Realtime Database & Local Storage</p>
+                    </div>
+                    <div class="space-x-2">
+                        <button onclick="app.exportCSV()" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-700 text-xs font-bold px-3.5 py-2 rounded-xl transition">
+                            <i class="fa-solid fa-file-excel mr-1"></i> Export CSV
+                        </button>
+                        <button onclick="app.clearResults()" class="bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold px-3.5 py-2 rounded-xl transition">
+                            <i class="fa-solid fa-trash-can mr-1"></i> Clear Data
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats summary cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="bg-indigo-50 p-4 rounded-2xl border border-indigo-100">
+                        <span class="text-xs font-bold text-indigo-500 block uppercase">Total Attempts</span>
+                        <span id="dashTotalAttempts" class="text-2xl font-bold text-indigo-700 font-fun">0</span>
+                    </div>
+                    <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
+                        <span class="text-xs font-bold text-emerald-500 block uppercase">Average Score</span>
+                        <span id="dashAvgScore" class="text-2xl font-bold text-emerald-700 font-fun">0%</span>
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-2xl border border-amber-100">
+                        <span class="text-xs font-bold text-amber-500 block uppercase">Topics Needing Practice</span>
+                        <span id="dashWeakTopic" class="text-sm font-bold text-amber-700 font-fun mt-1 block">None yet</span>
+                    </div>
+                </div>
+
+                <!-- Results Table -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-600 text-xs uppercase font-bold border-b border-slate-200">
+                                <th class="p-3">Pupil Name</th>
+                                <th class="p-3">Class</th>
+                                <th class="p-3">Unit/Mode</th>
+                                <th class="p-3">Score</th>
+                                <th class="p-3">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dashTableBody" class="text-sm divide-y divide-slate-100">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 p-4 border-t border-slate-200 text-right">
+                <button onclick="app.hideTeacherModal()" class="bg-slate-700 hover:bg-slate-800 text-white px-6 py-2.5 rounded-xl font-bold text-sm transition">
+                    Close Dashboard
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getDatabase, ref, push, set, onValue, remove } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAD0Dt9URW-I7OfcwbBvvSlTIsAzWbNgQs",
+            authDomain: "smart-play-academy.firebaseapp.com",
+            databaseURL: "https://smart-play-academy-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "smart-play-academy",
+            storageBucket: "smart-play-academy.firebasestorage.app",
+            messagingSenderId: "176875986573",
+            appId: "1:176875986573:web:7c634a36808c2985824cc4"
+        };
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'english-fun-quiz-v1';
+        
+        let appInstance, dbInstance, authInstance, currentUserUid = null;
+        let remoteResults = [];
+
+        try {
+            appInstance = initializeApp(firebaseConfig);
+            dbInstance = getDatabase(appInstance);
+            authInstance = getAuth(appInstance);
+
+            const initAuth = async () => {
+                try {
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(authInstance, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(authInstance);
+                    }
+                    currentUserUid = authInstance.currentUser ? authInstance.currentUser.uid : 'anon-' + Math.random().toString(36).substring(2, 9);
+                    
+                    // Listen to Realtime Database results
+                    const resultsRef = ref(dbInstance, `artifacts/${appId}/public/data/quizResults`);
+                    onValue(resultsRef, (snapshot) => {
+                        const data = snapshot.val();
+                        remoteResults = [];
+                        if (data) {
+                            Object.keys(data).forEach(key => {
+                                remoteResults.push({ id: key, ...data[key] });
+                            });
+                        }
+                        window.app.syncRemoteResults(remoteResults);
+                    }, (error) => {
+                        console.error("Firebase read error:", error);
+                    });
+
+                } catch (err) {
+                    console.error("Firebase auth error:", err);
+                }
+            };
+            initAuth();
+        } catch (e) {
+            console.error("Firebase initialization failed:", e);
+        }
+
+        window.saveResultToFirebase = function(resultData) {
+            if (!dbInstance) return;
+            try {
+                const resultsRef = ref(dbInstance, `artifacts/${appId}/public/data/quizResults`);
+                const newRef = push(resultsRef);
+                set(newRef, {
+                    ...resultData,
+                    uid: currentUserUid,
+                    timestamp: new Date().toISOString()
+                });
+            } catch (err) {
+                console.error("Firebase save error:", err);
+            }
+        };
+
+        window.clearFirebaseData = function() {
+            if (!dbInstance) return;
+            try {
+                const resultsRef = ref(dbInstance, `artifacts/${appId}/public/data/quizResults`);
+                set(resultsRef, null);
+            } catch (err) {
+                console.error("Firebase clear error:", err);
+            }
+        };
+    </script>
+
+    <!-- Quiz Engine & Application Logic -->
+    <script>
+        // Comprehensive Question Bank for Units 1-4 (Year 1 & 2 KPM Syllabus)
+        const QUESTION_BANK = {
+            1: [ // UNIT 1: AT SCHOOL
+                {
+                    q: "What's this?",
+                    choices: ["pencil", "pen", "rubber"],
+                    correct: 0,
+                    explanation: "It's a pencil! We use a pencil to write and draw.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="40" y="20" width="20" height="60" rx="3" fill="#fde047"/><polygon points="40,80 50,95 60,80" fill="#cbd5e1"/><polygon points="40,20 50,5 60,20" fill="#f43f5e"/><rect x="46" y="30" width="8" height="30" fill="#fef08a"/></svg>`
+                },
+                {
+                    q: "Is it a ruler?",
+                    choices: ["Yes, it is.", "No, it isn't.", "It's a bag."],
+                    correct: 0,
+                    explanation: "Yes, it is a long ruler for measuring and drawing straight lines.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="20" y="40" width="60" height="20" rx="4" fill="#38bdf8"/><line x1="30" y1="40" x2="30" y2="48" stroke="#0284c7" stroke-width="2"/><line x1="40" y1="40" x2="40" y2="52" stroke="#0284c7" stroke-width="2"/><line x1="50" y1="40" x2="50" y2="48" stroke="#0284c7" stroke-width="2"/><line x1="60" y1="40" x2="60" y2="52" stroke="#0284c7" stroke-width="2"/><line x1="70" y1="40" x2="70" y2="48" stroke="#0284c7" stroke-width="2"/></svg>`
+                },
+                {
+                    q: "What is this classroom object?",
+                    choices: ["rubber", "book", "pen"],
+                    correct: 0,
+                    explanation: "It's a pink rubber (eraser) used to clean pencil marks.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="30" y="35" width="40" height="30" rx="8" fill="#f472b6"/><rect x="30" y="50" width="40" height="15" fill="#fda4af"/></svg>`
+                },
+                {
+                    q: "Choose the correct instruction:",
+                    choices: ["Open your bag, please.", "Eat your lunch.", "Sleep in class."],
+                    correct: 0,
+                    explanation: "'Open your bag, please' is a standard classroom instruction.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><path d="M30 40 h40 v40 h-40 z" fill="#a855f7" rx="8"/><path d="M40 40 v-10 a10 10 0 0 1 20 0 v10" fill="none" stroke="#7e22ce" stroke-width="4"/><circle cx="50" cy="65" r="6" fill="#fef08a"/></svg>`
+                },
+                {
+                    q: "What's this object you write with in ink?",
+                    choices: ["pen", "desk", "chair"],
+                    correct: 0,
+                    explanation: "It's a blue or black pen.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="44" y="15" width="12" height="70" rx="3" fill="#3b82f6"/><polygon points="44,85 50,95 56,85" fill="#1e293b"/><rect x="47" y="20" width="6" height="40" fill="#93c5fd"/></svg>`
+                },
+                {
+                    q: "Complete the sentence: 'It's ... book.'",
+                    choices: ["a", "an", "the"],
+                    correct: 0,
+                    explanation: "We use 'a' before consonant sounds like 'book'.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><path d="M25 30 c15 -10 35 -10 50 0 v45 c-15 -10 -35 -10 -50 0 z" fill="#fb7185"/><path d="M50 30 v45" stroke="#ffe4e6" stroke-width="3"/></svg>`
+                },
+                {
+                    q: "What's this school furniture where you sit?",
+                    choices: ["chair", "pencil case", "notebook"],
+                    correct: 0,
+                    explanation: "It's a chair!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="35" y="30" width="30" height="30" rx="4" fill="#fbbf24"/><rect x="35" y="60" width="6" height="25" fill="#d97706"/><rect x="59" y="60" width="6" height="25" fill="#d97706"/><rect x="35" y="30" width="6" height="35" fill="#d97706"/></svg>`
+                },
+                {
+                    q: "Complete the instruction: 'Put away your ..., please.'",
+                    choices: ["book", "desk", "chair"],
+                    correct: 0,
+                    explanation: "'Put away your book, please' when class is finished.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><path d="M30 35 c12 -8 28 -8 40 0 v38 c-12 -8 -28 -8 -40 0 z" fill="#34d399"/><path d="M50 35 v38" stroke="#a7f3d0" stroke-width="2"/></svg>`
+                },
+                {
+                    q: "What's this where you keep your pencils?",
+                    choices: ["pencil case", "bag", "notebook"],
+                    correct: 0,
+                    explanation: "It's a pencil case to keep stationery organized.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="25" y="35" width="50" height="30" rx="10" fill="#c084fc"/><circle cx="50" cy="50" r="5" fill="#fef08a"/></svg>`
+                },
+                {
+                    q: "Is it a pen? [No, it isn't, it's a ...]",
+                    choices: ["ruler", "pen", "desk"],
+                    correct: 0,
+                    explanation: "No, it isn't a pen. It's a ruler.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="25" y="42" width="50" height="16" rx="3" fill="#60a5fa"/></svg>`
+                }
+            ],
+            2: [ // UNIT 2: LET'S PLAY!
+                {
+                    q: "What toy is this?",
+                    choices: ["ball", "doll", "kite"],
+                    correct: 0,
+                    explanation: "It's a bouncy ball!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><circle cx="50" cy="50" r="28" fill="#ef4444"/><path d="M30 40 c10 10 30 10 40 0" stroke="white" stroke-width="3" fill="none"/></svg>`
+                },
+                {
+                    q: "What shape is this? (Round with no corners)",
+                    choices: ["circle", "triangle", "square"],
+                    correct: 0,
+                    explanation: "It's a circle!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><circle cx="50" cy="50" r="30" fill="#38bdf8"/></svg>`
+                },
+                {
+                    q: "What toy is this?",
+                    choices: ["kite", "bike", "train"],
+                    correct: 0,
+                    explanation: "It's a flying kite in the sky!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><polygon points="50,15 75,45 50,85 25,45" fill="#f43f5e"/><line x1="50" y1="85" x2="50" y2="95" stroke="#cbd5e1" stroke-width="2"/></svg>`
+                },
+                {
+                    q: "Count the items: How many stars? ⭐⭐⭐",
+                    choices: ["three", "two", "four"],
+                    correct: 0,
+                    explanation: "There are three stars!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><text x="15" y="60" font-size="36">⭐⭐⭐</text></svg>`
+                },
+                {
+                    q: "What shape has three straight sides?",
+                    choices: ["triangle", "square", "rectangle"],
+                    correct: 0,
+                    explanation: "It's a triangle!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><polygon points="50,20 80,75 20,75" fill="#fbbf24"/></svg>`
+                },
+                {
+                    q: "Complete: 'My favourite toy is a ...'",
+                    choices: ["doll", "circle", "triangle"],
+                    correct: 0,
+                    explanation: "A doll is a toy children love to play with.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><circle cx="50" cy="35" r="16" fill="#fbcfe8"/><rect x="40" y="52" width="20" height="28" rx="6" fill="#f472b6"/></svg>`
+                },
+                {
+                    q: "What toy has two wheels and pedals?",
+                    choices: ["bike", "car", "plane"],
+                    correct: 0,
+                    explanation: "It's a bicycle (bike).",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><circle cx="30" cy="60" r="14" fill="none" stroke="#334155" stroke-width="4"/><circle cx="70" cy="60" r="14" fill="none" stroke="#334155" stroke-width="4"/><path d="M30 60 L50 35 L70 60" fill="none" stroke="#3b82f6" stroke-width="4"/></svg>`
+                },
+                {
+                    q: "What shape has four equal sides?",
+                    choices: ["square", "circle", "triangle"],
+                    correct: 0,
+                    explanation: "It's a square with 4 equal sides.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="30" y="30" width="40" height="40" rx="4" fill="#a78bfa"/></svg>`
+                },
+                {
+                    q: "What toy runs on railway tracks?",
+                    choices: ["train", "go-kart", "car"],
+                    correct: 0,
+                    explanation: "It's a toy train!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="25" y="40" width="50" height="25" rx="5" fill="#ef4444"/><circle cx="35" cy="70" r="7" fill="#1e293b"/><circle cx="65" cy="70" r="7" fill="#1e293b"/></svg>`
+                },
+                {
+                    q: "What spooky monster is this?",
+                    choices: ["monster", "doll", "ball"],
+                    correct: 0,
+                    explanation: "It's a funny green monster!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="30" y="30" width="40" height="40" rx="12" fill="#22c55e"/><circle cx="42" cy="45" r="5" fill="white"/><circle cx="58" cy="45" r="5" fill="white"/><circle cx="42" cy="45" r="2" fill="black"/><circle cx="58" cy="45" r="2" fill="black"/><path d="M42 60 Q50 68 58 60" stroke="white" stroke-width="2" fill="none"/></svg>`
+                }
+            ],
+            3: [ // UNIT 3: PET SHOW
+                {
+                    q: "What animal is this? Meow!",
+                    choices: ["cat", "dog", "fish"],
+                    correct: 0,
+                    explanation: "It's a cute cat!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><circle cx="50" cy="55" r="22" fill="#fb923c"/><polygon points="32,42 25,22 42,38" fill="#fb923c"/><polygon points="68,42 75,22 58,38" fill="#fb923c"/><circle cx="42" cy="50" r="3" fill="#1e293b"/><circle cx="58" cy="50" r="3" fill="#1e293b"/></svg>`
+                },
+                {
+                    q: "What animal is this? Woof woof!",
+                    choices: ["dog", "rabbit", "bird"],
+                    correct: 0,
+                    explanation: "It's a friendly dog!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><circle cx="50" cy="55" r="24" fill="#d97706"/><path d="M30 40 Q20 50 32 60" fill="#b45309"/><path d="M70 40 Q80 50 68 60" fill="#b45309"/><circle cx="42" cy="50" r="3" fill="black"/><circle cx="58" cy="50" r="3" fill="black"/><ellipse cx="50" cy="62" rx="5" ry="3" fill="black"/></svg>`
+                },
+                {
+                    q: "Complete: 'I like cats, but I ... dogs.'",
+                    choices: ["don't like", "like", "am"],
+                    correct: 0,
+                    explanation: "'I don't like dogs' expresses a dislike.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><circle cx="50" cy="50" r="30" fill="#fecdd3"/><text x="35" y="60" font-size="28">❌</text></svg>`
+                },
+                {
+                    q: "Where is the cat? The cat is ... the box.",
+                    choices: ["in", "on", "under"],
+                    correct: 0,
+                    explanation: "'in' means inside the box.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="30" y="45" width="40" height="35" fill="#a16207" rx="3"/><circle cx="50" cy="50" r="12" fill="#fb923c"/></svg>`
+                },
+                {
+                    q: "Where is the ball? The ball is ... the table.",
+                    choices: ["on", "in", "spider"],
+                    correct: 0,
+                    explanation: "'on' means resting on top of the surface.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="20" y="65" width="60" height="8" fill="#78350f"/><circle cx="50" cy="52" r="12" fill="#ef4444"/></svg>`
+                },
+                {
+                    q: "What pet swims in water with fins?",
+                    choices: ["fish", "turtle", "bird"],
+                    correct: 0,
+                    explanation: "It's a little fish!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><ellipse cx="50" cy="50" rx="25" ry="15" fill="#38bdf8"/><polygon points="70,50 85,35 85,65" fill="#0ea5e9"/><circle cx="38" cy="46" r="3" fill="white"/><circle cx="38" cy="46" r="1.5" fill="black"/></svg>`
+                },
+                {
+                    q: "What pet has long ears and hops?",
+                    choices: ["rabbit", "lizard", "spider"],
+                    correct: 0,
+                    explanation: "It's a fluffy rabbit!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><ellipse cx="50" cy="60" rx="18" ry="15" fill="#e2e8f0"/><ellipse cx="44" cy="30" rx="5" ry="15" fill="#e2e8f0"/><ellipse cx="56" cy="30" rx="5" ry="15" fill="#e2e8f0"/></svg>`
+                },
+                {
+                    q: "What animal has feathers and can sing?",
+                    choices: ["bird", "turtle", "cat"],
+                    correct: 0,
+                    explanation: "It's a colorful bird!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><circle cx="50" cy="50" r="20" fill="#a855f7"/><polygon points="65,50 80,45 68,58" fill="#f59e0b"/><circle cx="42" cy="45" r="3" fill="white"/></svg>`
+                },
+                {
+                    q: "Where is the cat? The cat is ... the chair (sleeping beneath).",
+                    choices: ["under", "on", "in"],
+                    correct: 0,
+                    explanation: "'under' means beneath an object.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="25" y="30" width="50" height="8" fill="#d97706"/><circle cx="50" cy="65" r="12" fill="#fb923c"/></svg>`
+                },
+                {
+                    q: "What animal has a hard shell and swims slowly?",
+                    choices: ["turtle", "spider", "dog"],
+                    correct: 0,
+                    explanation: "It's a sweet pet turtle!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><ellipse cx="50" cy="55" r="22" ry="14" fill="#15803d"/><circle cx="70" cy="55" r="8" fill="#22c55e"/></svg>`
+                }
+            ],
+            4: [ // UNIT 4: LUNCHTIME
+                {
+                    q: "What food item is this?",
+                    choices: ["sandwich", "cake", "pizza"],
+                    correct: 0,
+                    explanation: "It's a delicious sandwich!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><polygon points="30,70 70,70 50,30" fill="#d97706"/><polygon points="35,65 65,65 50,38" fill="#22c55e"/><polygon points="32,68 68,68 50,34" fill="#ef4444"/></svg>`
+                },
+                {
+                    q: "What red fruit is this?",
+                    choices: ["apple", "banana", "pear"],
+                    correct: 0,
+                    explanation: "It's a crisp red apple!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><circle cx="50" cy="55" r="22" fill="#ef4444"/><path d="M50 33 Q52 20 60 25" stroke="#15803d" stroke-width="3" fill="none"/></svg>`
+                },
+                {
+                    q: "Complete grammar: 'I've got ... sandwich.'",
+                    choices: ["a", "an", "any"],
+                    correct: 0,
+                    explanation: "We say 'I've got a sandwich.'",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="30" y="40" width="40" height="30" rx="6" fill="#fbbf24"/></svg>`
+                },
+                {
+                    q: "What yellow curved fruit is this?",
+                    choices: ["banana", "pineapple", "peach"],
+                    correct: 0,
+                    explanation: "It's a sweet yellow banana!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><path d="M30 70 Q60 60 70 30 Q50 60 30 70" fill="#facc15"/></svg>`
+                },
+                {
+                    q: "Complete question: 'Have we got ... apples?'",
+                    choices: ["any", "a", "an"],
+                    correct: 0,
+                    explanation: "We use 'any' in questions for plural nouns like apples.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><circle cx="40" cy="50" r="14" fill="#ef4444"/><circle cx="65" cy="55" r="14" fill="#22c55e"/></svg>`
+                },
+                {
+                    q: "What green vegetable looks like a tiny tree?",
+                    choices: ["broccoli", "onion", "potato"],
+                    correct: 0,
+                    explanation: "It's healthy green broccoli!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><circle cx="50" cy="40" r="20" fill="#16a34a"/><rect x="46" y="55" width="8" height="20" fill="#a16207"/></svg>`
+                },
+                {
+                    q: "What food item is baked for birthdays with candles?",
+                    choices: ["cake", "sandwich", "chicken drumstick"],
+                    correct: 0,
+                    explanation: "It's a sweet birthday cake!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="30" y="45" width="40" height="30" rx="4" fill="#f472b6"/><rect x="48" y="25" width="4" height="20" fill="#fef08a"/><circle cx="50" cy="22" r="3" fill="#f97316"/></svg>`
+                },
+                {
+                    q: "What juicy food item is round and cheesy?",
+                    choices: ["pizza", "banana", "pear"],
+                    correct: 0,
+                    explanation: "It's yummy cheese pizza!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><path d="M25 75 L75 75 L50 30 Z" fill="#f59e0b"/><circle cx="45" cy="60" r="4" fill="#ef4444"/><circle cx="55" cy="50" r="4" fill="#ef4444"/></svg>`
+                },
+                {
+                    q: "What juicy meat piece is this?",
+                    choices: ["chicken drumstick", "apple", "broccoli"],
+                    correct: 0,
+                    explanation: "It's a crispy chicken drumstick!",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><ellipse cx="50" cy="55" rx="18" ry="14" fill="#b45309"/><rect x="32" y="30" width="8" height="20" rx="3" fill="#f8fafc" transform="rotate(-30 36 40)"/></svg>`
+                },
+                {
+                    q: "Answer: 'Have we got any apples?' [Yes, ...]",
+                    choices: ["we have", "we haven't", "it is"],
+                    correct: 0,
+                    explanation: "Yes, we have! Short answer for affirmative plural.",
+                    svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><circle cx="50" cy="50" r="22" fill="#22c55e"/><text x="38" y="60" font-size="28" fill="white">✓</text></svg>`
+                }
+            ]
+        };
+
+        class EnglishQuizApp {
+            constructor() {
+                this.playerName = '';
+                this.playerClass = '';
+                this.selectedMode = 'unit'; // 'unit', 'mixed', 'spelling', 'listening'
+                this.selectedUnit = 1;
+                this.currentQuestions = [];
+                this.currentIndex = 0;
+                this.score = 0;
+                this.correctCount = 0;
+                this.incorrectCount = 0;
+                this.reviewData = [];
+                this.soundEnabled = true;
+                this.localResults = JSON.parse(localStorage.getItem('eq_results') || '[]');
+                this.remoteResults = [];
+
+                this.initSpeech();
+            }
+
+            initSpeech() {
+                this.synth = window.speechSynthesis;
+            }
+
+            speak(text) {
+                if (!this.soundEnabled || !this.synth) return;
+                try {
+                    this.synth.cancel();
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'en-GB';
+                    utterance.rate = 0.9;
+                    this.synth.speak(utterance);
+                } catch (e) {
+                    console.error("Speech synthesis error:", e);
+                }
+            }
+
+            toggleSound() {
+                this.soundEnabled = !this.soundEnabled;
+                const icon = document.getElementById('soundIcon');
+                if (this.soundEnabled) {
+                    icon.className = "fa-solid fa-volume-high";
+                    this.speak("Sound enabled");
+                } else {
+                    icon.className = "fa-solid fa-volume-xmark";
+                }
+            }
+
+            startQuizSetup() {
+                const nameInput = document.getElementById('pupilName').value.trim();
+                const classInput = document.getElementById('pupilClass').value.trim();
+
+                if (!nameInput) {
+                    this.showAlertBox("Please enter pupil's name first! ⭐");
+                    return;
+                }
+
+                this.playerName = nameInput;
+                this.playerClass = classInput || 'Year 1 / 2';
+                document.getElementById('displayPlayerName').innerText = this.playerName;
+
+                document.getElementById('screen-welcome').classList.add('hidden');
+                document.getElementById('screen-menu').classList.remove('hidden');
+            }
+
+            goHome() {
+                document.getElementById('screen-welcome').classList.remove('hidden');
+                document.getElementById('screen-menu').classList.add('hidden');
+                document.getElementById('screen-quiz').classList.add('hidden');
+                document.getElementById('screen-results').classList.add('hidden');
+            }
+
+            setMode(mode) {
+                this.selectedMode = mode;
+                document.querySelectorAll('.mode-btn').forEach(btn => {
+                    btn.classList.remove('border-pink-300', 'bg-pink-50', 'text-pink-700');
+                    btn.classList.add('border-slate-200', 'bg-white', 'text-slate-600');
+                });
+                
+                const activeBtn = document.getElementById(`mode-${mode}`);
+                if (activeBtn) {
+                    activeBtn.classList.remove('border-slate-200', 'bg-white', 'text-slate-600');
+                    activeBtn.classList.add('border-pink-300', 'bg-pink-50', 'text-pink-700');
+                }
+
+                const unitContainer = document.getElementById('unit-selection-container');
+                const startAction = document.getElementById('start-action-container');
+
+                if (mode === 'unit') {
+                    unitContainer.classList.remove('hidden');
+                    startAction.classList.add('hidden');
+                } else {
+                    unitContainer.classList.add('hidden');
+                    startAction.classList.remove('hidden');
+                }
+            }
+
+            launchQuiz(unitNum) {
+                this.selectedUnit = unitNum;
+                this.currentIndex = 0;
+                this.score = 0;
+                this.correctCount = 0;
+                this.incorrectCount = 0;
+                this.reviewData = [];
+
+                if (this.selectedMode === 'unit') {
+                    this.currentQuestions = JSON.parse(JSON.stringify(QUESTION_BANK[unitNum]));
+                } else if (this.selectedMode === 'mixed') {
+                    this.currentQuestions = [];
+                    Object.keys(QUESTION_BANK).forEach(u => {
+                        this.currentQuestions.push(...QUESTION_BANK[u]);
+                    });
+                    this.currentQuestions = this.shuffleArray(this.currentQuestions).slice(0, 12);
+                } else if (this.selectedMode === 'spelling') {
+                    // Filter or use general questions formatted for spelling
+                    this.currentQuestions = [];
+                    Object.keys(QUESTION_BANK).forEach(u => {
+                        this.currentQuestions.push(...QUESTION_BANK[u]);
+                    });
+                    this.currentQuestions = this.shuffleArray(this.currentQuestions).slice(0, 10);
+                } else if (this.selectedMode === 'listening') {
+                    this.currentQuestions = [];
+                    Object.keys(QUESTION_BANK).forEach(u => {
+                        this.currentQuestions.push(...QUESTION_BANK[u]);
+                    });
+                    this.currentQuestions = this.shuffleArray(this.currentQuestions).slice(0, 10);
+                }
+
+                // Randomize question order
+                this.currentQuestions = this.shuffleArray(this.currentQuestions);
+
+                document.getElementById('screen-menu').classList.add('hidden');
+                document.getElementById('screen-quiz').classList.remove('hidden');
+
+                const badge = document.getElementById('quizBadge');
+                if (this.selectedMode === 'unit') {
+                    badge.innerText = `Unit ${unitNum}: At School / Toys / Pets / Lunch`;
+                } else {
+                    badge.innerText = `${this.selectedMode.toUpperCase()} CHALLENGE`;
+                }
+
+                document.getElementById('totalQNum').innerText = this.currentQuestions.length;
+                this.loadQuestion();
+            }
+
+            loadQuestion() {
+                const q = this.currentQuestions[this.currentIndex];
+                document.getElementById('currentQNum').innerText = this.currentIndex + 1;
+                
+                const progressPct = ((this.currentIndex) / this.currentQuestions.length) * 100;
+                document.getElementById('progressBar').style.width = `${progressPct}%`;
+                document.getElementById('currentScore').innerText = this.score;
+
+                const qTextEl = document.getElementById('questionText');
+                const illBox = document.getElementById('illustrationBox');
+                const listeningPrompt = document.getElementById('listeningAudioPrompt');
+                const feedbackBox = document.getElementById('feedbackBox');
+
+                feedbackBox.classList.add('hidden');
+
+                illBox.innerHTML = q.svg || `<div class="text-4xl">📚</div>`;
+
+                if (this.selectedMode === 'listening') {
+                    qTextEl.innerText = "Listen to the word and choose the matching picture:";
+                    listeningPrompt.classList.remove('hidden');
+                    // Auto play audio word
+                    this.playCurrentAudioWord();
+                } else if (this.selectedMode === 'spelling') {
+                    qTextEl.innerText = "Choose the correct spelling for this picture:";
+                    listeningPrompt.classList.add('hidden');
+                } else {
+                    qTextEl.innerText = q.q;
+                    listeningPrompt.classList.add('hidden');
+                }
+
+                // Prepare choices (randomize order)
+                const choicesContainer = document.getElementById('choicesContainer');
+                choicesContainer.innerHTML = '';
+
+                // Create choice array with correct index tracking
+                let choiceObjs = q.choices.map((c, idx) => ({ text: c, isCorrect: idx === q.correct }));
+                choiceObjs = this.shuffleArray(choiceObjs);
+
+                choiceObjs.forEach((choiceObj) => {
+                    const btn = document.createElement('button');
+                    btn.className = "bg-white border-2 border-slate-200 hover:border-pink-400 hover:bg-pink-50/50 text-slate-700 font-bold p-4 rounded-2xl shadow-sm text-base transition bounce-hover flex items-center justify-center space-x-2";
+                    btn.innerHTML = `<span>${choiceObj.text}</span>`;
+                    btn.onclick = () => this.handleAnswer(choiceObj.isCorrect, q.choices[q.correct], choiceObj.text, q);
+                    choicesContainer.appendChild(btn);
+                });
+            }
+
+            playQuestionAudio() {
+                const q = this.currentQuestions[this.currentIndex];
+                this.speak(q.q);
+            }
+
+            playCurrentAudioWord() {
+                const q = this.currentQuestions[this.currentIndex];
+                const correctWord = q.choices[q.correct];
+                this.speak(correctWord);
+            }
+
+            handleAnswer(isCorrect, correctAnswerText, chosenAnswerText, questionObj) {
+                const feedbackBox = document.getElementById('feedbackBox');
+                const feedbackTitle = document.getElementById('feedbackTitle');
+                const feedbackExplanation = document.getElementById('feedbackExplanation');
+
+                // Disable further clicks
+                const buttons = document.querySelectorAll('#choicesContainer button');
+                buttons.forEach(b => b.disabled = true);
+
+                this.reviewData.push({
+                    question: questionObj.q,
+                    chosen: chosenAnswerText,
+                    correct: correctAnswerText,
+                    isCorrect: isCorrect
+                });
+
+                feedbackBox.classList.remove('hidden');
+
+                if (isCorrect) {
+                    this.score += 1;
+                    this.correctCount += 1;
+                    feedbackBox.className = "mt-6 p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-200 text-emerald-800 transition-all";
+                    feedbackTitle.innerText = "Excellent! ⭐";
+                    feedbackExplanation.innerText = questionObj.explanation;
+                    this.speak("Excellent!");
+                } else {
+                    this.incorrectCount += 1;
+                    feedbackBox.className = "mt-6 p-4 rounded-2xl bg-rose-50 border-2 border-rose-200 text-rose-800 transition-all";
+                    feedbackTitle.innerText = "Try again! 💪 (Correct: " + correctAnswerText + ")";
+                    feedbackExplanation.innerText = questionObj.explanation;
+                    this.speak("Try again!");
+                }
+
+                document.getElementById('currentScore').innerText = this.score;
+            }
+
+            nextQuestion() {
+                this.currentIndex++;
+                if (this.currentIndex < this.currentQuestions.length) {
+                    this.loadQuestion();
+                } else {
+                    this.showResults();
+                }
+            }
+
+            showResults() {
+                document.getElementById('screen-quiz').classList.add('hidden');
+                document.getElementById('screen-results').classList.remove('hidden');
+
+                const total = this.currentQuestions.length;
+                const percentage = Math.round((this.score / total) * 100);
+
+                document.getElementById('resultPlayerSummary').innerText = `${this.playerName} (${this.playerClass}) completed the quiz!`;
+                document.getElementById('resScore').innerText = `${this.score}/${total}`;
+                document.getElementById('resPercentage').innerText = `${percentage}%`;
+                document.getElementById('resCorrect').innerText = this.correctCount;
+                document.getElementById('resIncorrect').innerText = this.incorrectCount;
+
+                const msgBadge = document.getElementById('finalMessageBadge');
+                if (percentage >= 80) {
+                    msgBadge.className = "p-4 rounded-2xl font-bold text-lg mb-8 max-w-lg mx-auto bg-emerald-50 text-emerald-800 border border-emerald-200";
+                    msgBadge.innerHTML = "🏆 Outstanding! You earned a Gold Star & Certificate!";
+                    this.speak("Outstanding job!");
+                } else if (percentage >= 50) {
+                    msgBadge.className = "p-4 rounded-2xl font-bold text-lg mb-8 max-w-lg mx-auto bg-amber-50 text-amber-800 border border-amber-200";
+                    msgBadge.innerHTML = "🌟 Great job! Keep practicing to get even better!";
+                    this.speak("Great job!");
+                } else {
+                    msgBadge.className = "p-4 rounded-2xl font-bold text-lg mb-8 max-w-lg mx-auto bg-blue-50 text-blue-800 border border-blue-200";
+                    msgBadge.innerHTML = "💪 Good try! Practice makes perfect!";
+                    this.speak("Good try!");
+                }
+
+                // Populate Review List
+                const reviewListContainer = document.getElementById('reviewListContainer');
+                reviewListContainer.innerHTML = '';
+                this.reviewData.forEach((rev, idx) => {
+                    const item = document.createElement('div');
+                    item.className = `p-3 rounded-xl border flex justify-between items-center text-sm ${rev.isCorrect ? 'bg-emerald-50/50 border-emerald-200 text-emerald-900' : 'bg-rose-50/50 border-rose-200 text-rose-900'}`;
+                    item.innerHTML = `
+                        <div>
+                            <span class="font-bold">Q${idx+1}:</span> ${rev.question}<br>
+                            <span class="text-xs text-slate-500">Your answer: <b class="${rev.isCorrect ? 'text-emerald-600' : 'text-rose-600'}">${rev.chosen}</b> | Correct: <b>${rev.correct}</b></span>
+                        </div>
+                        <div>
+                            ${rev.isCorrect ? '<i class="fa-solid fa-check text-emerald-500 text-lg"></i>' : '<i class="fa-solid fa-xmark text-rose-500 text-lg"></i>'}
+                        </div>
+                    `;
+                    reviewListContainer.appendChild(item);
+                });
+
+                // Save result locally and remotely
+                const resultRecord = {
+                    name: this.playerName,
+                    pupilClass: this.playerClass,
+                    mode: this.selectedMode,
+                    unit: this.selectedUnit,
+                    score: this.score,
+                    total: total,
+                    percentage: percentage,
+                    date: new Date().toLocaleDateString()
+                };
+
+                this.localResults.push(resultRecord);
+                localStorage.setItem('eq_results', JSON.stringify(this.localResults));
+
+                if (typeof window.saveResultToFirebase === 'function') {
+                    window.saveResultToFirebase(resultRecord);
+                }
+            }
+
+            restartSameQuiz() {
+                this.launchQuiz(this.selectedUnit);
+            }
+
+            returnToMenu() {
+                document.getElementById('screen-results').classList.add('hidden');
+                document.getElementById('screen-menu').classList.remove('hidden');
+            }
+
+            showTeacherModal() {
+                document.getElementById('teacherModal').classList.remove('hidden');
+                this.renderTeacherDashboard();
+            }
+
+            hideTeacherModal() {
+                document.getElementById('teacherModal').classList.add('hidden');
+            }
+
+            syncRemoteResults(remoteList) {
+                this.remoteResults = remoteList;
+            }
+
+            renderTeacherDashboard() {
+                const tbody = document.getElementById('dashTableBody');
+                tbody.innerHTML = '';
+
+                // Combine local and remote results (deduplicate if needed or prioritize remote)
+                let allResults = [...this.remoteResults];
+                if (allResults.length === 0) {
+                    allResults = [...this.localResults];
+                }
+
+                document.getElementById('dashTotalAttempts').innerText = allResults.length;
+
+                if (allResults.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400">No quiz records found yet.</td></tr>`;
+                    document.getElementById('dashAvgScore').innerText = '0%';
+                    document.getElementById('dashWeakTopic').innerText = 'None yet';
+                    return;
+                }
+
+                let totalPct = 0;
+                allResults.forEach(r => {
+                    totalPct += (r.percentage || 0);
+                    const tr = document.createElement('tr');
+                    tr.className = "hover:bg-slate-50 transition border-b border-slate-100";
+                    tr.innerHTML = `
+                        <td class="p-3 font-semibold text-slate-700">${r.name || 'Anonymous'}</td>
+                        <td class="p-3 text-slate-500">${r.pupilClass || '-'}</td>
+                        <td class="p-3 text-slate-600 capitalize">${r.mode === 'unit' ? 'Unit ' + r.unit : r.mode}</td>
+                        <td class="p-3 font-bold text-indigo-600">${r.score}/${r.total} (${r.percentage}%)</td>
+                        <td class="p-3 text-xs text-slate-400">${r.date || 'Today'}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+
+                const avg = Math.round(totalPct / allResults.length);
+                document.getElementById('dashAvgScore').innerText = `${avg}%`;
+                document.getElementById('dashWeakTopic').innerText = avg < 70 ? 'Vocabulary & Spelling Practice' : 'All topics progressing well';
+            }
+
+            clearResults() {
+                this.localResults = [];
+                localStorage.removeItem('eq_results');
+                if (typeof window.clearFirebaseData === 'function') {
+                    window.clearFirebaseData();
+                }
+                this.renderTeacherDashboard();
+                this.showAlertBox("All records cleared successfully!");
+            }
+
+            exportCSV() {
+                let allResults = this.remoteResults.length > 0 ? this.remoteResults : this.localResults;
+                if (allResults.length === 0) {
+                    this.showAlertBox("No data to export!");
+                    return;
+                }
+                let csv = "Pupil Name,Class,Mode,Unit,Score,Total,Percentage,Date\n";
+                allResults.forEach(r => {
+                    csv += `"${r.name}","${r.pupilClass}","${r.mode}","${r.unit}","${r.score}","${r.total}","${r.percentage}%","${r.date}"\n`;
+                });
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'english_fun_quiz_report.csv';
+                a.click();
+            }
+
+            showAlertBox(msg) {
+                // Simple custom non-blocking notification banner or alert modal replacement
+                const banner = document.createElement('div');
+                banner.className = "fixed bottom-5 right-5 bg-slate-900 text-white px-6 py-3 rounded-2xl shadow-xl z-50 text-sm font-bold flex items-center space-x-2 animate-bounce";
+                banner.innerHTML = `<i class="fa-solid fa-circle-exclamation text-amber-400"></i><span>${msg}</span>`;
+                document.body.appendChild(banner);
+                setTimeout(() => banner.remove(), 3000);
+            }
+
+            shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+        }
+
+        const app = new EnglishQuizApp();
+        window.app = app;
+    </script>
+</body>
+</html>
