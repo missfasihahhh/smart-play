@@ -865,7 +865,6 @@
                     });
                     this.currentQuestions = this.shuffleArray(this.currentQuestions).slice(0, 12);
                 } else if (this.selectedMode === 'spelling') {
-                    // Filter or use general questions formatted for spelling
                     this.currentQuestions = [];
                     Object.keys(QUESTION_BANK).forEach(u => {
                         this.currentQuestions.push(...QUESTION_BANK[u]);
@@ -879,7 +878,6 @@
                     this.currentQuestions = this.shuffleArray(this.currentQuestions).slice(0, 10);
                 }
 
-                // Randomize question order
                 this.currentQuestions = this.shuffleArray(this.currentQuestions);
 
                 document.getElementById('screen-menu').classList.add('hidden');
@@ -887,7 +885,7 @@
 
                 const badge = document.getElementById('quizBadge');
                 if (this.selectedMode === 'unit') {
-                    badge.innerText = `Unit ${unitNum}: At School / Toys / Pets / Lunch`;
+                    badge.innerText = `Unit ${unitNum}: School / Toys / Pets / Lunch`;
                 } else {
                     badge.innerText = `${this.selectedMode.toUpperCase()} CHALLENGE`;
                 }
@@ -910,13 +908,11 @@
                 const feedbackBox = document.getElementById('feedbackBox');
 
                 feedbackBox.classList.add('hidden');
-
                 illBox.innerHTML = q.svg || `<div class="text-4xl">📚</div>`;
 
                 if (this.selectedMode === 'listening') {
                     qTextEl.innerText = "Listen to the word and choose the matching picture:";
                     listeningPrompt.classList.remove('hidden');
-                    // Auto play audio word
                     this.playCurrentAudioWord();
                 } else if (this.selectedMode === 'spelling') {
                     qTextEl.innerText = "Choose the correct spelling for this picture:";
@@ -926,11 +922,9 @@
                     listeningPrompt.classList.add('hidden');
                 }
 
-                // Prepare choices (randomize order)
                 const choicesContainer = document.getElementById('choicesContainer');
                 choicesContainer.innerHTML = '';
 
-                // Create choice array with correct index tracking
                 let choiceObjs = q.choices.map((c, idx) => ({ text: c, isCorrect: idx === q.correct }));
                 choiceObjs = this.shuffleArray(choiceObjs);
 
@@ -959,7 +953,6 @@
                 const feedbackTitle = document.getElementById('feedbackTitle');
                 const feedbackExplanation = document.getElementById('feedbackExplanation');
 
-                // Disable further clicks
                 const buttons = document.querySelectorAll('#choicesContainer button');
                 buttons.forEach(b => b.disabled = true);
 
@@ -1027,7 +1020,6 @@
                     this.speak("Good try!");
                 }
 
-                // Populate Review List
                 const reviewListContainer = document.getElementById('reviewListContainer');
                 reviewListContainer.innerHTML = '';
                 this.reviewData.forEach((rev, idx) => {
@@ -1045,7 +1037,6 @@
                     reviewListContainer.appendChild(item);
                 });
 
-                // Save result locally and remotely
                 const resultRecord = {
                     name: this.playerName,
                     pupilClass: this.playerClass,
@@ -1091,7 +1082,6 @@
                 const tbody = document.getElementById('dashTableBody');
                 tbody.innerHTML = '';
 
-                // Combine local and remote results (deduplicate if needed or prioritize remote)
                 let allResults = [...this.remoteResults];
                 if (allResults.length === 0) {
                     allResults = [...this.localResults];
@@ -1155,9 +1145,8 @@
             }
 
             showAlertBox(msg) {
-                // Simple custom non-blocking notification banner or alert modal replacement
                 const banner = document.createElement('div');
-                banner.className = "fixed bottom-5 right-5 bg-slate-900 text-white px-6 py-3 rounded-2xl shadow-xl z-50 text-sm font-bold flex items-center space-x-2 animate-bounce";
+                banner.className = "fixed bottom-5 right-5 bg-slate-900/90 text-white px-6 py-3 rounded-2xl shadow-xl z-50 text-sm font-bold flex items-center space-x-2 animate-bounce";
                 banner.innerHTML = `<i class="fa-solid fa-circle-exclamation text-amber-400"></i><span>${msg}</span>`;
                 document.body.appendChild(banner);
                 setTimeout(() => banner.remove(), 3000);
