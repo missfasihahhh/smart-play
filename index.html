@@ -1,189 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>English Fun Worksheet Maker — Unit 1: At School</title>
-<style>
-:root{--pink:#ffd8eb;--blue:#d9f0ff;--yellow:#fff2b9;--green:#d8f8df;--purple:#e8ddff;--ink:#202331;--line:#d8dce5}
-*{box-sizing:border-box}
-body{margin:0;background:linear-gradient(135deg,#fff0f7,#e9f7ff 50%,#fff8d8);font-family:"Trebuchet MS",Arial,sans-serif;color:var(--ink)}
-button,input{font:inherit}
-.topbar{position:sticky;top:0;z-index:10;background:#ffffffed;border-bottom:1px solid #e8eaf0;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{display:flex;align-items:center;gap:10px}
-.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#ff9acb,#9ddcff);display:grid;place-items:center;font-size:25px}
-.brand h1{font-size:18px;margin:0}
-.brand p{font-size:11px;margin:2px 0;color:#657084}
-.actions{display:flex;gap:7px;flex-wrap:wrap}
-.btn{border:0;border-radius:11px;padding:10px 13px;font-weight:800;cursor:pointer}
-.pink{background:#ffb5d7}.blue{background:#bde8ff}.yellow{background:#ffe99a}.dark{background:#30394e;color:white}.soft{background:#f0eaff}
-main{max-width:1100px;margin:22px auto;padding:0 15px 35px}
-.intro{background:#ffffffdf;border:2px solid white;border-radius:23px;padding:22px;box-shadow:0 12px 30px #26324b14;display:grid;grid-template-columns:1.4fr .6fr;gap:20px;align-items:center;margin-bottom:18px}
-.tag{display:inline-block;background:#ffe3f0;color:#9b3467;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:900}
-.intro h2{font-size:clamp(27px,4vw,42px);margin:10px 0}
-.intro h2 span{color:#ee65a4}
-.intro p{color:#606a7c;line-height:1.5}
-.hero{background:linear-gradient(145deg,#e3f6ff,#fff1f8);border-radius:20px;padding:10px;display:grid;place-items:center}
-.hero svg{width:100%;max-width:270px}
-.fields{display:flex;gap:9px;flex-wrap:wrap}
-.field{display:flex;flex:1;min-width:140px;flex-direction:column;gap:5px}
-.field label{font-size:11px;font-weight:900;text-transform:uppercase;color:#667085}
-.field input{border:2px solid #e8d8e7;border-radius:10px;padding:9px;background:white}
-.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:18px 0}
-.toolbar h3{margin:0}
-.muted{color:#657084;font-size:12px}
-.section{background:white;border-radius:17px;border:1px solid #e4e7ee;margin:15px 0;overflow:hidden;box-shadow:0 8px 24px #26324b0c;break-inside:avoid}
-.head{display:flex;align-items:center;gap:10px;padding:11px 15px;font-weight:900}
-.head .letter{width:38px;height:38px;border-radius:50%;background:#202331;color:white;display:grid;place-items:center;font-size:23px;flex-shrink:0}
-.head h3{margin:0;font-size:23px}
-.head p{margin:2px 0 0;font-size:12px}
-.hb{background:var(--blue)}.hy{background:var(--yellow)}.hg{background:var(--green)}.hp{background:var(--purple)}.hk{background:var(--pink)}
-.content{padding:13px}
-.instructions{font-size:13px;font-weight:800;margin:0 0 11px}
-.grid{display:grid;gap:8px}
-.five{grid-template-columns:repeat(5,minmax(0,1fr))}
-.card{border:1.5px solid #d9dce5;border-radius:11px;padding:7px;min-width:0;position:relative;background:linear-gradient(#fff,#fcfcff)}
-.num{position:absolute;top:6px;left:6px;background:#202331;color:white;border-radius:50%;width:27px;height:27px;display:grid;place-items:center;font-weight:900;z-index:1}
-.art{height:103px;margin:13px 0 6px;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 85%,#dbe7f0 0%,#f8fafc 45%,transparent 72%);border-radius:9px}
-.art svg{height:100%;width:100%;max-width:145px;filter:drop-shadow(0 5px 5px #24304418)}
-.choices{display:flex;gap:3px;justify-content:space-around}
-.choice{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:0}
-.choice .art{height:64px;margin:0;background:transparent}
-.choice input{appearance:none;width:17px;height:17px;border:2px solid #8993a4;border-radius:4px;background:#fff;margin:0;flex-shrink:0}
-.choice input[type=radio]{border-radius:50%}
-.choice input:checked{background:#ffc2df;border-color:#d94c91;box-shadow:inset 0 0 0 4px white}
-.tiny{font-size:9px;text-align:center;color:#626c7d;font-weight:700;line-height:1.1}
-.speech{background:#fff;border:1.5px solid #d3d9e4;border-radius:12px 12px 12px 3px;padding:7px;font-size:11px;font-weight:900;text-align:center;min-height:37px;display:grid;place-items:center;margin:4px 0 7px}
-.answers{display:flex;flex-direction:column;gap:5px}
-.answer{display:flex;gap:5px;font-size:10px;line-height:1.2;font-weight:700}
-.answer input{accent-color:#e65a9d;margin:1px 0 0;flex-shrink:0}
-.sentence{font-weight:900;font-size:12px;text-align:center;min-height:32px;display:grid;place-items:center}
-.mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px}
-.mini .choice{border:1px solid #eef0f5;border-radius:7px;padding:2px}
-.mini .art{height:54px}
-.pattern{text-align:center;font-size:17px;font-weight:900;letter-spacing:2px;margin:7px 0}
-.spell{width:100%;border:0;border-bottom:2px solid #aeb7c6;text-align:center;font-size:14px;font-weight:900;letter-spacing:2px;padding:5px 0;outline:none}
-.actioncard{display:grid;grid-template-columns:minmax(120px,.8fr) 2fr;gap:8px;align-items:center;margin-bottom:7px}
-.actionchoices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
-.actionchoice{border:1.5px solid #dce0e8;border-radius:9px;padding:4px;display:flex;flex-direction:column;align-items:center;gap:4px}
-.actionchoice .art{height:72px;margin:0}
-.actionchoice input{accent-color:#e65a9d}
-.actionchoice:has(input:checked){background:#fff0f7;border-color:#ed8abb}
-#results,#answerKey{display:none;background:white;border-radius:16px;padding:18px;margin-top:18px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.stat{background:#f7f7fc;padding:12px;border-radius:10px;text-align:center}
-.stat strong{display:block;font-size:24px}
-.foot{text-align:center;color:#7b8493;font-size:11px;margin:18px}
-@media(max-width:760px){
- .intro{grid-template-columns:1fr}
- .five{grid-template-columns:repeat(2,minmax(0,1fr))}
- .head h3{font-size:20px}
- .art{height:120px}
-}
-@media(max-width:480px){
- .brand h1{font-size:14px}
- .brand p{display:none}
- .topbar .btn{font-size:10px;padding:8px}
- .five{grid-template-columns:1fr}
- .actioncard{grid-template-columns:1fr}
- .actionchoices .art{height:65px}
-}
-@media print{
- @page{size:A4 portrait;margin:8mm}
- body{background:white!important;font-size:10pt}
- .topbar,.intro,.toolbar,.no-print,#results,#answerKey{display:none!important}
- main{max-width:none;margin:0;padding:0}
- .section{box-shadow:none;border:1px solid #777;margin:0 0 6mm;border-radius:7px}
- .head{padding:6px 8px;background:#edf4fa!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
- .head .letter{width:28px;height:28px;font-size:16px}
- .head h3{font-size:16px}
- .head p{font-size:8pt}
- .content{padding:7px}
- .instructions{font-size:9pt;margin-bottom:6px}
- .five{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
- .card{padding:4px;border-color:#777;border-radius:5px}
- .num{width:20px;height:20px;font-size:11px;top:3px;left:3px}
- .art{height:66px;margin:9px 0 3px;background:white}
- .choice .art{height:43px}
- .tiny{font-size:6.5pt}
- .speech{font-size:7.5pt;min-height:28px;padding:3px}
- .answer{font-size:7pt;gap:2px}
- .sentence{font-size:8pt;min-height:24px}
- .mini .art{height:39px}
- .pattern{font-size:12pt}
- .spell{font-size:10pt}
- .actioncard{grid-template-columns:minmax(100px,.8fr) 2fr}
- .actionchoice .art{height:50px}
- .section#secD{break-before:page}
- .section#secE{break-before:page}
- #worksheetHeader{display:flex!important}
-}
-</style>
-</head>
-<body>
-<header class="topbar no-print">
- <div class="brand">
-  <div class="logo">🎒</div>
-  <div>
-   <h1>English Fun Worksheet Maker</h1>
-   <p>Year 1 • Pre-A1 English • Unit 1: At School</p>
-  </div>
- </div>
- <div class="actions">
-  <button class="btn blue" onclick="toggleAnswers()">👩‍🏫 Answer Key</button>
-  <button class="btn yellow" onclick="window.print()">🖨️ Print / Save PDF</button>
-  <button class="btn pink" onclick="resetWorksheet()">↻ Reset</button>
- </div>
-</header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENGLISH FUN WORKSHEET MAKER — UNIT 1: AT SCHOOL</title>
+    <style>
+        /* BASE & PALETTE STYLES */
+        :root {
+            --pastel-pink: #fce7f3;
+            --pastel-blue: #e0f2fe;
+            --pastel-green: #dcfce7;
+            --pastel-purple: #f3e8ff;
+            --pastel-yellow: #fef9c3;
+            --primary-pink: #ec4899;
+            --primary-blue: #0284c7;
+            --primary-green: #16a34a;
+            --primary-purple: #9333ea;
+            --dark-slate: #1e293b;
+            --light-bg: #f8fafc;
+            --card-shadow: 0 10px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
+        }
 
-<main>
-<section class="intro no-print">
- <div>
-  <span class="tag">✨ MALAYSIAN PRIMARY SCHOOL • YEAR 1</span>
-  <h2>UNIT 1: <span>AT SCHOOL</span> 🎨</h2>
-  <p>A colourful, picture-based worksheet with Listening, Speaking, Reading, Writing and Language Arts. Fill in pupil details, complete the questions, then print or save as PDF.</p>
-  <div class="fields">
-   <div class="field">
-    <label for="pupilName">Pupil's name</label>
-    <input id="pupilName" placeholder="e.g. Aina">
-   </div>
-   <div class="field">
-    <label for="pupilClass">Class</label>
-    <input id="pupilClass" placeholder="e.g. 1 Bestari">
-   </div>
-   <div class="field">
-    <label for="pupilDate">Date</label>
-    <input id="pupilDate" type="date">
-   </div>
-  </div>
- </div>
- <div class="hero" id="hero"></div>
-</section>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--pastel-pink) 0%, var(--pastel-blue) 50%, var(--pastel-yellow) 100%);
+            color: var(--dark-slate);
+            padding: 20px;
+            min-height: 100vh;
+            line-height: 1.5;
+        }
 
-<div id="worksheetHeader" style="display:none;align-items:center;justify-content:space-between;border:2px solid #333;border-radius:7px;padding:7px 10px;margin-bottom:5mm">
- <div style="display:flex;align-items:center;gap:9px">
-  <span style="font-size:26px">🏫</span>
-  <strong style="font-size:22px">UNIT 1: AT SCHOOL</strong>
- </div>
- <div style="font-size:9pt;line-height:1.7">
-  Name: <span id="printName">____________</span><br>
-  Class: <span id="printClass">____________</span><br>
-  Date: <span id="printDate">____________</span>
- </div>
-</div>
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
 
-<div class="toolbar no-print">
- <div>
-  <h3>📚 Your worksheet</h3>
-  <span class="muted">25 questions • 25 marks • tick, circle and spell</span>
- </div>
- <div class="actions">
-  <button class="btn dark" onclick="checkAnswers()">Check Answers</button>
-  <button class="btn soft" onclick="toggleCompact()">Compact view</button>
- </div>
-</div>
-
-<section class="section" id="secA">
- <div class="head hb">
-  <span class="letter">A</span>
-  <div><h3>🔊 Listening</h3><p>Listen to and tick the correct picture.
+        /* DASHBOARD STYLES (NON-PRINTABLE) */
+        .teacher-dashboard {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 25px;
+            border: 3px solid #f472b6;
+        }
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .dashboard-header h1 {
+            font-size: 1.8rem;
+            color: var(--primary-pink);
+            letter-spacing: -0.5px;
+        }
+        .dashboard-header p {
+            color: #64748b;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .pupil-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+            background: #fdf2f8;
+            padding: 15px;
+            border-radius: 12px;
+        }
+        .info-field label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 7
