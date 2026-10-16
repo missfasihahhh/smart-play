@@ -1,1114 +1,189 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Fun Quiz – Topic 1: School</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Quicksand', sans-serif;
-            background: linear-gradient(135deg, #fce7f3 0%, #e0f2fe 50%, #fef3c7 100%);
-            min-height: 100vh;
-        }
-        h1, h2, h3, .font-fun {
-            font-family: 'Fredoka', cursive, sans-serif;
-        }
-        .bounce-hover {
-            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .bounce-hover:hover {
-            transform: translateY(-4px) scale(1.02);
-        }
-        .bounce-hover:active {
-            transform: translateY(1px) scale(0.98);
-        }
-        .card-shadow {
-            box-shadow: 0 12px 30px -5px rgba(148, 163, 184, 0.25), 0 8px 10px -6px rgba(148, 163, 184, 0.15);
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-        }
-        .animate-float {
-            animation: float 4s ease-in-out infinite;
-        }
-        .svg-container svg {
-            width: 100%;
-            height: 100%;
-            max-height: 260px;
-            object-fit: contain;
-            filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.08));
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>English Fun Worksheet Maker — Unit 1: At School</title>
+<style>
+:root{--pink:#ffd8eb;--blue:#d9f0ff;--yellow:#fff2b9;--green:#d8f8df;--purple:#e8ddff;--ink:#202331;--line:#d8dce5}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#fff0f7,#e9f7ff 50%,#fff8d8);font-family:"Trebuchet MS",Arial,sans-serif;color:var(--ink)}
+button,input{font:inherit}
+.topbar{position:sticky;top:0;z-index:10;background:#ffffffed;border-bottom:1px solid #e8eaf0;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#ff9acb,#9ddcff);display:grid;place-items:center;font-size:25px}
+.brand h1{font-size:18px;margin:0}
+.brand p{font-size:11px;margin:2px 0;color:#657084}
+.actions{display:flex;gap:7px;flex-wrap:wrap}
+.btn{border:0;border-radius:11px;padding:10px 13px;font-weight:800;cursor:pointer}
+.pink{background:#ffb5d7}.blue{background:#bde8ff}.yellow{background:#ffe99a}.dark{background:#30394e;color:white}.soft{background:#f0eaff}
+main{max-width:1100px;margin:22px auto;padding:0 15px 35px}
+.intro{background:#ffffffdf;border:2px solid white;border-radius:23px;padding:22px;box-shadow:0 12px 30px #26324b14;display:grid;grid-template-columns:1.4fr .6fr;gap:20px;align-items:center;margin-bottom:18px}
+.tag{display:inline-block;background:#ffe3f0;color:#9b3467;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:900}
+.intro h2{font-size:clamp(27px,4vw,42px);margin:10px 0}
+.intro h2 span{color:#ee65a4}
+.intro p{color:#606a7c;line-height:1.5}
+.hero{background:linear-gradient(145deg,#e3f6ff,#fff1f8);border-radius:20px;padding:10px;display:grid;place-items:center}
+.hero svg{width:100%;max-width:270px}
+.fields{display:flex;gap:9px;flex-wrap:wrap}
+.field{display:flex;flex:1;min-width:140px;flex-direction:column;gap:5px}
+.field label{font-size:11px;font-weight:900;text-transform:uppercase;color:#667085}
+.field input{border:2px solid #e8d8e7;border-radius:10px;padding:9px;background:white}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:18px 0}
+.toolbar h3{margin:0}
+.muted{color:#657084;font-size:12px}
+.section{background:white;border-radius:17px;border:1px solid #e4e7ee;margin:15px 0;overflow:hidden;box-shadow:0 8px 24px #26324b0c;break-inside:avoid}
+.head{display:flex;align-items:center;gap:10px;padding:11px 15px;font-weight:900}
+.head .letter{width:38px;height:38px;border-radius:50%;background:#202331;color:white;display:grid;place-items:center;font-size:23px;flex-shrink:0}
+.head h3{margin:0;font-size:23px}
+.head p{margin:2px 0 0;font-size:12px}
+.hb{background:var(--blue)}.hy{background:var(--yellow)}.hg{background:var(--green)}.hp{background:var(--purple)}.hk{background:var(--pink)}
+.content{padding:13px}
+.instructions{font-size:13px;font-weight:800;margin:0 0 11px}
+.grid{display:grid;gap:8px}
+.five{grid-template-columns:repeat(5,minmax(0,1fr))}
+.card{border:1.5px solid #d9dce5;border-radius:11px;padding:7px;min-width:0;position:relative;background:linear-gradient(#fff,#fcfcff)}
+.num{position:absolute;top:6px;left:6px;background:#202331;color:white;border-radius:50%;width:27px;height:27px;display:grid;place-items:center;font-weight:900;z-index:1}
+.art{height:103px;margin:13px 0 6px;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 85%,#dbe7f0 0%,#f8fafc 45%,transparent 72%);border-radius:9px}
+.art svg{height:100%;width:100%;max-width:145px;filter:drop-shadow(0 5px 5px #24304418)}
+.choices{display:flex;gap:3px;justify-content:space-around}
+.choice{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;min-width:0}
+.choice .art{height:64px;margin:0;background:transparent}
+.choice input{appearance:none;width:17px;height:17px;border:2px solid #8993a4;border-radius:4px;background:#fff;margin:0;flex-shrink:0}
+.choice input[type=radio]{border-radius:50%}
+.choice input:checked{background:#ffc2df;border-color:#d94c91;box-shadow:inset 0 0 0 4px white}
+.tiny{font-size:9px;text-align:center;color:#626c7d;font-weight:700;line-height:1.1}
+.speech{background:#fff;border:1.5px solid #d3d9e4;border-radius:12px 12px 12px 3px;padding:7px;font-size:11px;font-weight:900;text-align:center;min-height:37px;display:grid;place-items:center;margin:4px 0 7px}
+.answers{display:flex;flex-direction:column;gap:5px}
+.answer{display:flex;gap:5px;font-size:10px;line-height:1.2;font-weight:700}
+.answer input{accent-color:#e65a9d;margin:1px 0 0;flex-shrink:0}
+.sentence{font-weight:900;font-size:12px;text-align:center;min-height:32px;display:grid;place-items:center}
+.mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px}
+.mini .choice{border:1px solid #eef0f5;border-radius:7px;padding:2px}
+.mini .art{height:54px}
+.pattern{text-align:center;font-size:17px;font-weight:900;letter-spacing:2px;margin:7px 0}
+.spell{width:100%;border:0;border-bottom:2px solid #aeb7c6;text-align:center;font-size:14px;font-weight:900;letter-spacing:2px;padding:5px 0;outline:none}
+.actioncard{display:grid;grid-template-columns:minmax(120px,.8fr) 2fr;gap:8px;align-items:center;margin-bottom:7px}
+.actionchoices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.actionchoice{border:1.5px solid #dce0e8;border-radius:9px;padding:4px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.actionchoice .art{height:72px;margin:0}
+.actionchoice input{accent-color:#e65a9d}
+.actionchoice:has(input:checked){background:#fff0f7;border-color:#ed8abb}
+#results,#answerKey{display:none;background:white;border-radius:16px;padding:18px;margin-top:18px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:#f7f7fc;padding:12px;border-radius:10px;text-align:center}
+.stat strong{display:block;font-size:24px}
+.foot{text-align:center;color:#7b8493;font-size:11px;margin:18px}
+@media(max-width:760px){
+ .intro{grid-template-columns:1fr}
+ .five{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .head h3{font-size:20px}
+ .art{height:120px}
+}
+@media(max-width:480px){
+ .brand h1{font-size:14px}
+ .brand p{display:none}
+ .topbar .btn{font-size:10px;padding:8px}
+ .five{grid-template-columns:1fr}
+ .actioncard{grid-template-columns:1fr}
+ .actionchoices .art{height:65px}
+}
+@media print{
+ @page{size:A4 portrait;margin:8mm}
+ body{background:white!important;font-size:10pt}
+ .topbar,.intro,.toolbar,.no-print,#results,#answerKey{display:none!important}
+ main{max-width:none;margin:0;padding:0}
+ .section{box-shadow:none;border:1px solid #777;margin:0 0 6mm;border-radius:7px}
+ .head{padding:6px 8px;background:#edf4fa!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+ .head .letter{width:28px;height:28px;font-size:16px}
+ .head h3{font-size:16px}
+ .head p{font-size:8pt}
+ .content{padding:7px}
+ .instructions{font-size:9pt;margin-bottom:6px}
+ .five{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+ .card{padding:4px;border-color:#777;border-radius:5px}
+ .num{width:20px;height:20px;font-size:11px;top:3px;left:3px}
+ .art{height:66px;margin:9px 0 3px;background:white}
+ .choice .art{height:43px}
+ .tiny{font-size:6.5pt}
+ .speech{font-size:7.5pt;min-height:28px;padding:3px}
+ .answer{font-size:7pt;gap:2px}
+ .sentence{font-size:8pt;min-height:24px}
+ .mini .art{height:39px}
+ .pattern{font-size:12pt}
+ .spell{font-size:10pt}
+ .actioncard{grid-template-columns:minmax(100px,.8fr) 2fr}
+ .actionchoice .art{height:50px}
+ .section#secD{break-before:page}
+ .section#secE{break-before:page}
+ #worksheetHeader{display:flex!important}
+}
+</style>
 </head>
-<body class="text-slate-700 flex flex-col min-h-screen">
-
-    <!-- Header Navigation Bar -->
-    <header class="bg-white/85 backdrop-blur-md shadow-sm sticky top-0 z-50 px-4 py-3 border-b border-pink-100">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="app.goHome()">
-                <div class="w-10 h-10 bg-gradient-to-tr from-pink-400 to-rose-400 rounded-2xl flex items-center justify-center text-white text-xl shadow-md">
-                    <i class="fa-solid fa-school"></i>
-                </div>
-                <div>
-                    <h1 class="text-xl font-bold text-pink-500 tracking-wide font-fun">English Fun Quiz</h1>
-                    <p class="text-xs text-slate-400 font-semibold">Topic 1: School • Year 1 & 2</p>
-                </div>
-            </div>
-            <div class="flex items-center space-x-2">
-                <button onclick="app.showTeacherModal()" class="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 px-3.5 py-2 rounded-2xl text-xs font-bold transition flex items-center space-x-2 border border-indigo-100">
-                    <i class="fa-solid fa-chalkboard-user text-sm"></i>
-                    <span class="hidden sm:inline">Teacher Dashboard</span>
-                </button>
-                <button onclick="app.toggleSound()" id="soundToggleBtn" class="bg-amber-50 hover:bg-amber-100 text-amber-700 w-10 h-10 rounded-2xl flex items-center justify-center transition border border-amber-100" title="Toggle Sound">
-                    <i class="fa-solid fa-volume-high" id="soundIcon"></i>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Container -->
-    <main class="flex-grow max-w-3xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-center items-center">
-        
-        <!-- SCREEN 1: WELCOME & PROFILE SETUP -->
-        <div id="screen-welcome" class="w-full bg-white/95 backdrop-blur rounded-3xl card-shadow p-6 sm:p-10 text-center border-4 border-pink-200 animate-float">
-            <div class="inline-block bg-pink-100 text-pink-600 px-4 py-1.5 rounded-full text-xs font-bold mb-4">
-                ✨ KPM Primary School English (Pre-A1 to A1) ✨
-            </div>
-            <h2 class="text-3xl sm:text-5xl font-bold text-slate-800 mb-3 font-fun">
-                Topic 1: <span class="text-pink-500">School</span> 🎒
-            </h2>
-            <p class="text-slate-500 text-sm sm:text-base mb-8 max-w-xl mx-auto">
-                Learn 15 school vocabulary words with interactive Soft 3D illustrations designed for Malaysian primary school pupils!
-            </p>
-
-            <div class="bg-slate-50/80 p-6 rounded-2xl max-w-md mx-auto mb-8 border border-slate-200 text-left">
-                <label class="block text-xs font-bold text-slate-600 uppercase mb-2" for="pupilName">
-                    <i class="fa-solid fa-user-pen text-pink-400 mr-1.5"></i> Pupil's Name:
-                </label>
-                <input type="text" id="pupilName" placeholder="e.g. Adam / Nurul" class="w-full px-4 py-3 rounded-xl border-2 border-pink-200 focus:border-pink-500 focus:outline-none bg-white text-slate-700 font-semibold mb-4 shadow-sm text-sm">
-                
-                <label class="block text-xs font-bold text-slate-600 uppercase mb-2" for="pupilClass">
-                    <i class="fa-solid fa-school text-blue-400 mr-1.5"></i> Class / Year:
-                </label>
-                <input type="text" id="pupilClass" placeholder="e.g. 1 Pintar / 2 Cemerlang" class="w-full px-4 py-3 rounded-xl border-2 border-blue-200 focus:border-blue-500 focus:outline-none bg-white text-slate-700 font-semibold shadow-sm text-sm">
-            </div>
-
-            <button onclick="app.startQuizSetup()" class="bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white font-bold text-lg sm:text-xl px-10 py-4 rounded-2xl shadow-lg bounce-hover transition">
-                Start Quiz! 🚀
-            </button>
-        </div>
-
-        <!-- SCREEN 2: QUIZ GAMEPLAY -->
-        <div id="screen-quiz" class="w-full hidden space-y-4">
-            <!-- Progress & Stats Bar -->
-            <div class="bg-white/95 backdrop-blur rounded-2xl p-4 card-shadow flex justify-between items-center border border-pink-100">
-                <div class="flex items-center space-x-2">
-                    <span class="bg-pink-100 text-pink-700 text-xs font-bold px-3 py-1.5 rounded-xl font-fun">Topic 1: School</span>
-                    <span class="text-xs font-bold text-slate-500">Q <span id="currentQNum">1</span>/15</span>
-                </div>
-                <div class="w-1/3 bg-slate-100 rounded-full h-3 overflow-hidden">
-                    <div id="progressBar" class="bg-gradient-to-r from-pink-400 to-rose-400 h-full w-0 transition-all duration-300"></div>
-                </div>
-                <div class="flex items-center space-x-1 bg-amber-50 text-amber-700 px-3 py-1.5 rounded-xl font-bold text-xs border border-amber-200">
-                    <i class="fa-solid fa-star text-amber-400 mr-1 text-sm"></i>
-                    <span id="currentScore">0</span> Stars
-                </div>
-            </div>
-
-            <!-- Question Card -->
-            <div class="bg-white/95 backdrop-blur rounded-3xl card-shadow p-5 sm:p-7 border-4 border-pink-100">
-                <!-- Question Header -->
-                <div class="flex justify-between items-center mb-3">
-                    <h3 id="questionText" class="text-xl sm:text-2xl font-bold text-slate-800 font-fun">
-                        What is this?
-                    </h3>
-                    <button onclick="app.playQuestionAudio()" class="text-pink-500 hover:text-pink-600 bg-pink-50 hover:bg-pink-100 p-2.5 rounded-2xl transition border border-pink-100" title="Listen to question">
-                        <i class="fa-solid fa-volume-high text-lg"></i>
-                    </button>
-                </div>
-
-                <!-- 3D Pastel Illustration Box -->
-                <div id="illustrationBox" class="w-full h-56 sm:h-64 bg-slate-50 rounded-2xl border-2 border-slate-100 flex items-center justify-center mb-5 relative overflow-hidden svg-container p-2">
-                    <!-- Soft 3D SVG inserted dynamically -->
-                </div>
-
-                <!-- Answer Choices (Exactly 3) -->
-                <div id="choicesContainer" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <!-- Dynamic Choice Buttons -->
-                </div>
-
-                <!-- Feedback Box -->
-                <div id="feedbackBox" class="mt-5 p-4 rounded-2xl hidden transition-all">
-                    <div class="flex items-center justify-between mb-1.5">
-                        <h4 id="feedbackTitle" class="font-bold text-base font-fun">Excellent! ⭐</h4>
-                        <button id="nextBtn" onclick="app.nextQuestion()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold px-5 py-2 rounded-xl text-xs shadow-md transition bounce-hover">
-                            Next Question <i class="fa-solid fa-arrow-right ml-1"></i>
-                        </button>
-                    </div>
-                    <p id="feedbackExplanation" class="text-xs sm:text-sm leading-relaxed"></p>
-                </div>
-            </div>
-        </div>
-
-        <!-- SCREEN 3: RESULTS & REVIEW -->
-        <div id="screen-results" class="w-full hidden space-y-6">
-            <div class="bg-white/95 backdrop-blur rounded-3xl card-shadow p-6 sm:p-10 text-center border-4 border-pink-200">
-                <div class="w-20 h-20 bg-amber-100 text-amber-500 rounded-3xl flex items-center justify-center text-4xl mx-auto mb-4 shadow-inner">
-                    🏆
-                </div>
-                <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-1 font-fun">Topic 1 Completed!</h2>
-                <p id="resultPlayerSummary" class="text-slate-500 text-sm mb-6">Great job completing the School Quiz!</p>
-
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl mx-auto mb-6">
-                    <div class="bg-pink-50 p-3.5 rounded-2xl border border-pink-100">
-                        <span class="block text-xs font-bold text-pink-400 uppercase">Score</span>
-                        <span id="resScore" class="text-xl font-bold text-pink-600 font-fun">0/15</span>
-                    </div>
-                    <div class="bg-blue-50 p-3.5 rounded-2xl border border-blue-100">
-                        <span class="block text-xs font-bold text-blue-400 uppercase">Percentage</span>
-                        <span id="resPercentage" class="text-xl font-bold text-blue-600 font-fun">0%</span>
-                    </div>
-                    <div class="bg-emerald-50 p-3.5 rounded-2xl border border-emerald-100">
-                        <span class="block text-xs font-bold text-emerald-500 uppercase">Correct</span>
-                        <span id="resCorrect" class="text-xl font-bold text-emerald-600 font-fun">0</span>
-                    </div>
-                    <div class="bg-rose-50 p-3.5 rounded-2xl border border-rose-100">
-                        <span class="block text-xs font-bold text-rose-400 uppercase">Incorrect</span>
-                        <span id="resIncorrect" class="text-xl font-bold text-rose-600 font-fun">0</span>
-                    </div>
-                </div>
-
-                <div id="finalMessageBadge" class="p-4 rounded-2xl font-bold text-sm mb-6 max-w-md mx-auto bg-amber-50 text-amber-800 border border-amber-200 font-fun">
-                    🎉 Excellent work!
-                </div>
-
-                <!-- Review Section -->
-                <div class="text-left mb-6">
-                    <h3 class="font-bold text-slate-700 text-base mb-3 flex items-center font-fun">
-                        <i class="fa-solid fa-clipboard-list text-pink-400 mr-2"></i> Question Review
-                    </h3>
-                    <div id="reviewListContainer" class="space-y-2.5 max-h-72 overflow-y-auto pr-1">
-                        <!-- Review items populated dynamically -->
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap justify-center gap-3">
-                    <button onclick="app.restartQuiz()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold px-6 py-3 rounded-2xl shadow-md transition bounce-hover text-sm">
-                        <i class="fa-solid fa-rotate-right mr-2"></i> Play Again
-                    </button>
-                    <button onclick="app.goHome()" class="bg-slate-700 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-2xl shadow-md transition bounce-hover text-sm">
-                        <i class="fa-solid fa-house mr-2"></i> Home Screen
-                    </button>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- TEACHER DASHBOARD MODAL -->
-    <div id="teacherModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl card-shadow max-w-2xl w-full max-h-[85vh] flex flex-col overflow-hidden border-4 border-indigo-200">
-            <div class="bg-indigo-500 p-4 text-white flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <i class="fa-solid fa-chalkboard-user text-xl"></i>
-                    <h3 class="text-lg font-bold font-fun">Teacher Dashboard – Topic 1: School</h3>
-                </div>
-                <button onclick="app.hideTeacherModal()" class="w-8 h-8 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <div class="p-5 overflow-y-auto space-y-5 flex-grow">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <h4 class="font-bold text-slate-800 text-sm">Pupil Assessment Records</h4>
-                        <p class="text-xs text-slate-400">Track Year 1 & 2 pupils' school vocabulary performance</p>
-                    </div>
-                    <div class="space-x-1.5">
-                        <button onclick="app.exportCSV()" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-xl transition">
-                            <i class="fa-solid fa-file-excel mr-1"></i> CSV
-                        </button>
-                        <button onclick="app.clearResults()" class="bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold px-3 py-1.5 rounded-xl transition">
-                            <i class="fa-solid fa-trash-can mr-1"></i> Clear
-                        </button>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="bg-indigo-50 p-3.5 rounded-2xl border border-indigo-100">
-                        <span class="text-xs font-bold text-indigo-500 block uppercase">Total Attempts</span>
-                        <span id="dashTotalAttempts" class="text-xl font-bold text-indigo-700 font-fun">0</span>
-                    </div>
-                    <div class="bg-emerald-50 p-3.5 rounded-2xl border border-emerald-100">
-                        <span class="text-xs font-bold text-emerald-500 block uppercase">Average Score</span>
-                        <span id="dashAvgScore" class="text-xl font-bold text-emerald-700 font-fun">0%</span>
-                    </div>
-                </div>
-
-                <!-- Results Table -->
-                <div class="border border-slate-200 rounded-2xl overflow-hidden">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-slate-50 text-slate-600 text-xs uppercase font-bold border-b border-slate-200">
-                                <th class="p-3">Pupil Name</th>
-                                <th class="p-3">Class</th>
-                                <th class="p-3">Score</th>
-                                <th class="p-3">Date</th>
-                            </tr>
-                        </thead>
-                        <tbody id="dashTableBody" class="text-xs divide-y divide-slate-100">
-                            <!-- Populated dynamically -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="bg-slate-50 p-3 border-t border-slate-200 text-right">
-                <button onclick="app.hideTeacherModal()" class="bg-slate-700 hover:bg-slate-800 text-white px-5 py-2 rounded-xl font-bold text-xs transition">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Firebase SDKs -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getDatabase, ref, push, set, onValue } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyAD0Dt9URW-I7OfcwbBvvSlTIsAzWbNgQs",
-            authDomain: "smart-play-academy.firebaseapp.com",
-            databaseURL: "https://smart-play-academy-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "smart-play-academy",
-            storageBucket: "smart-play-academy.firebasestorage.app",
-            messagingSenderId: "176875986573",
-            appId: "1:176875986573:web:7c634a36808c2985824cc4"
-        };
-
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'english-fun-quiz-school-v1';
-        let dbInstance, authInstance, currentUserUid = null;
-
-        try {
-            const appInstance = initializeApp(firebaseConfig);
-            dbInstance = getDatabase(appInstance);
-            authInstance = getAuth(appInstance);
-
-            const initAuth = async () => {
-                try {
-                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                        await signInWithCustomToken(authInstance, __initial_auth_token);
-                    } else {
-                        await signInAnonymously(authInstance);
-                    }
-                    currentUserUid = authInstance.currentUser ? authInstance.currentUser.uid : 'anon-' + Math.random().toString(36).substring(2, 9);
-                    
-                    const resultsRef = ref(dbInstance, `artifacts/${appId}/public/data/quizResults`);
-                    onValue(resultsRef, (snapshot) => {
-                        const data = snapshot.val();
-                        const remoteResults = [];
-                        if (data) {
-                            Object.keys(data).forEach(key => {
-                                remoteResults.push({ id: key, ...data[key] });
-                            });
-                        }
-                        if (window.app) window.app.syncRemoteResults(remoteResults);
-                    });
-                } catch (err) {
-                    console.error("Firebase Auth Error:", err);
-                }
-            };
-            initAuth();
-        } catch (e) {
-            console.error("Firebase Init Error:", e);
-        }
-
-        window.saveResultToFirebase = function(resultData) {
-            if (!dbInstance) return;
-            try {
-                const resultsRef = ref(dbInstance, `artifacts/${appId}/public/data/quizResults`);
-                const newRef = push(resultsRef);
-                set(newRef, {
-                    ...resultData,
-                    uid: currentUserUid,
-                    timestamp: new Date().toISOString()
-                });
-            } catch (err) {
-                console.error("Firebase Save Error:", err);
-            }
-        };
-
-        window.clearFirebaseData = function() {
-            if (!dbInstance) return;
-            try {
-                const resultsRef = ref(dbInstance, `artifacts/${appId}/public/data/quizResults`);
-                set(resultsRef, null);
-            } catch (err) {
-                console.error("Firebase Clear Error:", err);
-            }
-        };
-    </script>
-
-    <!-- Quiz Engine & Application Data -->
-    <script>
-        // Shared Soft 3D SVG Assets Palette & Render Components
-        // Colors: Pastel Blue (#bae6fd), Mint Green (#a7f3d0), Lavender (#e9d5ff), Blush Pink (#fbcfe8), Butter Yellow (#fef08a), Cream (#fef3c7)
-
-        const SVG_3D_ASSETS = {
-            // Q1: Schoolbag
-            schoolbag: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#bae6fd"/><stop offset="100%" stop-color="#7dd3fc"/></linearGradient>
-                    <linearGradient id="mintGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#a7f3d0"/><stop offset="100%" stop-color="#6ee7b7"/></linearGradient>
-                    <filter id="shadow1" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="8" stdDeviation="6" flood-opacity="0.15"/></filter>
-                </defs>
-                <ellipse cx="150" cy="210" rx="90" ry="14" fill="#cbd5e1" opacity="0.5"/>
-                <rect x="75" y="45" width="150" height="155" rx="35" fill="url(#bgGrad1)" filter="url(#shadow1)"/>
-                <path d="M 115 45 C 115 20, 185 20, 185 45" stroke="#0284c7" stroke-width="12" fill="none" stroke-linecap="round"/>
-                <rect x="95" y="115" width="110" height="70" rx="18" fill="url(#mintGrad)"/>
-                <path d="M 100 115 H 200" stroke="#059669" stroke-width="4" stroke-dasharray="6,4"/>
-                <path d="M 90 60 C 70 80, 70 140, 80 170" stroke="#0284c7" stroke-width="10" fill="none" stroke-linecap="round"/>
-                <path d="M 210 60 C 230 80, 230 140, 220 170" stroke="#0284c7" stroke-width="10" fill="none" stroke-linecap="round"/>
-                <circle cx="150" cy="135" r="7" fill="#fef08a"/>
-                <rect x="135" y="70" width="30" height="20" rx="5" fill="#38bdf8"/>
-            </svg>`,
-
-            // Q2: Boy holding pencil
-            pencil_holding: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#fde047"/><stop offset="100%" stop-color="#facc15"/></linearGradient>
-                    <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#e2e8f0"/></linearGradient>
-                </defs>
-                <ellipse cx="150" cy="215" rx="80" ry="10" fill="#cbd5e1" opacity="0.4"/>
-                <!-- Boy Head & Body -->
-                <path d="M 80 140 Q 110 110 140 140 L 140 210 L 80 210 Z" fill="url(#shirtGrad)"/>
-                <circle cx="105" cy="90" r="35" fill="#fbcfe8"/>
-                <path d="M 75 80 C 75 55, 135 55, 135 80 C 120 70, 90 70, 75 80 Z" fill="#475569"/>
-                <circle cx="95" cy="90" r="4" fill="#334155"/>
-                <circle cx="115" cy="90" r="4" fill="#334155"/>
-                <path d="M 100 105 Q 105 112 110 105" stroke="#e11d48" stroke-width="3" fill="none"/>
-                <!-- Arm holding Yellow Pencil -->
-                <path d="M 125 155 Q 160 140 190 140" stroke="#fbcfe8" stroke-width="16" stroke-linecap="round" fill="none"/>
-                <!-- Large Yellow Pencil -->
-                <g transform="translate(170, 70) rotate(25)">
-                    <rect x="0" y="0" width="22" height="110" fill="#facc15" rx="3"/>
-                    <rect x="0" y="0" width="6" height="110" fill="#fde047"/>
-                    <rect x="0" y="0" width="22" height="18" fill="#f472b6" rx="2"/>
-                    <rect x="0" y="18" width="22" height="6" fill="#94a3b8"/>
-                    <polygon points="0,110 11,132 22,110" fill="#fde047"/>
-                    <polygon points="7,124 11,132 15,124" fill="#334155"/>
-                </g>
-            </svg>`,
-
-            // Q3: Book on desk
-            book: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="deskGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#fde68a"/><stop offset="100%" stop-color="#f59e0b"/></linearGradient>
-                    <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f43f5e"/><stop offset="100%" stop-color="#fb7185"/></linearGradient>
-                </defs>
-                <!-- Classroom Wooden Desk Top -->
-                <polygon points="20,150 280,150 250,210 50,210" fill="url(#deskGrad)"/>
-                <rect x="50" y="210" width="12" height="25" fill="#b45309"/>
-                <rect x="238" y="210" width="12" height="25" fill="#b45309"/>
-                <!-- Closed Book resting on desk -->
-                <g transform="translate(85, 120)">
-                    <rect x="0" y="10" width="130" height="55" rx="6" fill="#f8fafc"/>
-                    <path d="M 0 0 L 130 0 L 130 12 L 0 12 Z" fill="#e2e8f0"/>
-                    <rect x="-4" y="-4" width="138" height="16" rx="5" fill="url(#bookGrad)"/>
-                    <path d="M 0 -4 L 0 55 L 134 55 L 134 48 L 10 48 L 10 -4 Z" fill="#be123c"/>
-                    <!-- Star Cover Icon -->
-                    <polygon points="65,22 68,30 76,30 70,35 72,43 65,38 58,43 60,35 54,30 62,30" fill="#fef08a"/>
-                </g>
-            </svg>`,
-
-            // Q4: Girl with ruler
-            ruler: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="rulerGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#bae6fd" stop-opacity="0.9"/><stop offset="100%" stop-color="#e0f2fe" stop-opacity="0.9"/></linearGradient>
-                </defs>
-                <ellipse cx="150" cy="200" rx="110" ry="12" fill="#cbd5e1" opacity="0.4"/>
-                <!-- Notebook in background -->
-                <rect x="50" y="70" width="120" height="110" rx="8" fill="#fef08a" transform="rotate(-8 110 125)"/>
-                <!-- Transparent 15-cm Ruler -->
-                <rect x="60" y="120" width="180" height="42" rx="6" fill="url(#rulerGrad)" stroke="#38bdf8" stroke-width="2.5"/>
-                <!-- Measurement Markings -->
-                <path d="M 75 120 V 132 M 90 120 V 127 M 105 120 V 127 M 120 120 V 127 M 135 120 V 132 M 150 120 V 127 M 165 120 V 127 M 180 120 V 127 M 195 120 V 132 M 210 120 V 127 M 225 120 V 132" stroke="#0284c7" stroke-width="2"/>
-                <text x="73" y="145" font-size="10" fill="#0284c7" font-weight="bold">0</text>
-                <text x="131" y="145" font-size="10" fill="#0284c7" font-weight="bold">5</text>
-                <text x="188" y="145" font-size="10" fill="#0284c7" font-weight="bold">10</text>
-                <text x="220" y="145" font-size="10" fill="#0284c7" font-weight="bold">15 cm</text>
-            </svg>`,
-
-            // Q5: Book on desk (Location)
-            book_on_desk: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="150" cy="210" rx="100" ry="12" fill="#cbd5e1" opacity="0.4"/>
-                <!-- 3D Classroom Desk -->
-                <rect x="40" y="120" width="220" height="20" fill="#fbbf24" rx="4"/>
-                <polygon points="40,140 260,140 240,165 60,165" fill="#d97706"/>
-                <rect x="65" y="165" width="14" height="50" fill="#92400e"/>
-                <rect x="221" y="165" width="14" height="50" fill="#92400e"/>
-                <!-- Complete Book on Desk -->
-                <rect x="110" y="85" width="80" height="36" rx="4" fill="#a7f3d0"/>
-                <rect x="110" y="80" width="80" height="8" fill="#34d399" rx="2"/>
-                <rect x="114" y="88" width="72" height="28" fill="#a855f7" rx="3"/>
-                <text x="135" y="106" font-size="12" fill="#ffffff" font-weight="bold">ENGLISH</text>
-            </svg>`,
-
-            // Q6: Teacher beside Whiteboard
-            teacher_whiteboard: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                <!-- Whiteboard Frame -->
-                <rect x="100" y="30" width="170" height="130" rx="8" fill="#334155"/>
-                <rect x="108" y="38" width="154" height="114" rx="4" fill="#ffffff"/>
-                <!-- Tray & Marker -->
-                <rect x="130" y="168" width="110" height="8" fill="#94a3b8" rx="2"/>
-                <text x="120" y="70" font-size="16" fill="#2563eb" font-weight="bold" font-family="sans-serif">ABC 123</text>
-                <!-- Malaysian Female Teacher in Baju Kurung -->
-                <circle cx="65" cy="75" r="22" fill="#fbcfe8"/>
-                <!-- Tudung / Hijab -->
-                <path d="M 40 75 C 40 45, 90 45, 90 75 C 90 105, 80 120, 65 120 C 50 120, 40 105, 40 75 Z" fill="#c084fc"/>
-                <circle cx="65" cy="78" r="15" fill="#fbcfe8"/>
-                <circle cx="60" cy="76" r="2" fill="#334155"/>
-                <circle cx="70" cy="76" r="2" fill="#334155"/>
-                <path d="M 62 86 Q 65 90 68 86" stroke="#e11d48" stroke-width="2" fill="none"/>
-                <!-- Body Baju Kurung -->
-                <path d="M 45 120 L 85 120 L 95 210 L 35 210 Z" fill="#a7f3d0"/>
-                <!-- Arm holding Whiteboard Marker -->
-                <path d="M 75 135 L 115 110" stroke="#a7f3d0" stroke-width="12" stroke-linecap="round"/>
-                <rect x="115" y="102" width="18" height="8" fill="#2563eb" rx="2" transform="rotate(-15 115 102)"/>
-            </svg>`,
-
-            // Q7: Girl opening Pencil Case
-            pencil_case: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="150" cy="195" rx="90" ry="12" fill="#cbd5e1" opacity="0.4"/>
-                <!-- Zippered Pencil Case -->
-                <rect x="70" y="90" width="160" height="75" rx="25" fill="#fbcfe8" stroke="#f472b6" stroke-width="3"/>
-                <!-- Zip Opening -->
-                <path d="M 85 110 H 215" stroke="#db2777" stroke-width="4" stroke-dasharray="8,4"/>
-                <circle cx="215" cy="110" r="6" fill="#fef08a"/>
-                <!-- Stationary visible inside -->
-                <rect x="100" y="65" width="10" height="40" rx="2" fill="#38bdf8" transform="rotate(-15 100 65)"/>
-                <rect x="130" y="60" width="10" height="45" rx="2" fill="#facc15" transform="rotate(10 130 60)"/>
-                <rect x="160" y="68" width="10" height="38" rx="2" fill="#4ade80" transform="rotate(25 160 68)"/>
-            </svg>`,
-
-            // Q8: Classroom Chair
-            chair: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="150" cy="210" rx="70" ry="12" fill="#cbd5e1" opacity="0.4"/>
-                <!-- Chair Backrest -->
-                <rect x="90" y="40" width="120" height="70" rx="12" fill="#38bdf8"/>
-                <rect x="105" y="55" width="90" height="40" rx="6" fill="#bae6fd"/>
-                <!-- Chair Seat -->
-                <polygon points="75,125 225,125 210,150 90,150" fill="#0284c7"/>
-                <!-- 4 Visible Metal Legs -->
-                <rect x="92" y="150" width="10" height="60" fill="#64748b"/>
-                <rect x="198" y="150" width="10" height="60" fill="#64748b"/>
-                <rect x="110" y="145" width="8" height="55" fill="#475569"/>
-                <rect x="182" y="145" width="8" height="55" fill="#475569"/>
-            </svg>`,
-
-            // Q9: Pen with notebook
-            pen: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                <!-- Open exercise book background -->
-                <rect x="60" y="50" width="180" height="130" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="3"/>
-                <line x1="150" y1="50" x2="150" y2="180" stroke="#94a3b8" stroke-width="3"/>
-                <line x1="80" y1="80" x2="130" y2="80" stroke="#e2e8f0" stroke-width="3"/>
-                <line x1="80" y1="100" x2="130" y2="100" stroke="#e2e8f0" stroke-width="3"/>
-                <!-- Detailed Ballpoint Pen -->
-                <g transform="translate(100, 40) rotate(35)">
-                    <rect x="0" y="0" width="16" height="130" rx="4" fill="#2563eb"/>
-                    <rect x="3" y="0" width="4" height="130" fill="#60a5fa"/>
-                    <polygon points="0,130 8,148 16,130" fill="#94a3b8"/>
-                    <polygon points="6,142 8,148 10,142" fill="#1e293b"/>
-                    <!-- Pen Clip & Click Mechanism -->
-                    <rect x="-4" y="15" width="6" height="35" rx="2" fill="#cbd5e1"/>
-                    <rect x="3" y="-10" width="10" height="10" rx="2" fill="#1d4ed8"/>
-                </g>
-            </svg>`,
-
-            // Q10: Eraser
-            eraser: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="150" cy="190" rx="80" ry="10" fill="#cbd5e1" opacity="0.4"/>
-                <!-- Paper with pencil lines -->
-                <rect x="50" y="60" width="200" height="120" fill="#ffffff" rx="4" stroke="#e2e8f0" stroke-width="2"/>
-                <path d="M 80 100 Q 110 90 140 100" stroke="#94a3b8" stroke-width="3" fill="none" stroke-dasharray="4,4"/>
-                <!-- Pink Soft 3D Eraser -->
-                <g transform="translate(110, 95) rotate(-10)">
-                    <rect x="0" y="0" width="90" height="50" rx="10" fill="#f472b6"/>
-                    <rect x="0" y="25" width="90" height="25" rx="10" fill="#db2777"/>
-                    <rect x="0" y="0" width="45" height="50" fill="#fbcfe8" rx="6"/>
-                    <text x="8" y="32" font-size="12" fill="#be123c" font-weight="bold" font-family="sans-serif">ERASER</text>
-                </g>
-            </svg>`,
-
-            // Q11: In the Classroom
-            classroom: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                <!-- Classroom Room Perspective -->
-                <rect x="0" y="0" width="300" height="240" fill="#f0f9ff"/>
-                <polygon points="0,180 300,180 300,240 0,240" fill="#e2e8f0"/>
-                <!-- Windows -->
-                <rect x="20" y="30" width="60" height="80" fill="#bae6fd" stroke="#0284c7" stroke-width="4" rx="4"/>
-                <line x1="50" y1="30" x2="50" y2="110" stroke="#0284c7" stroke-width="2"/>
-                <!-- Whiteboard in Center -->
-                <rect x="100" y="25" width="180" height="90" fill="#ffffff" stroke="#64748b" stroke-width="5" rx="6"/>
-                <!-- Pupils at Desks -->
-                <circle cx="140" cy="145" r="14" fill="#fbcfe8"/>
-                <rect x="125" y="160" width="30" height="25" rx="6" fill="#38bdf8"/>
-                <rect x="110" y="175" width="60" height="15" rx="3" fill="#f59e0b"/>
-                
-                <circle cx="220" cy="145" r="14" fill="#fde047"/>
-                <rect x="205" y="160" width="30" height="25" rx="6" fill="#a7f3d0"/>
-                <rect x="190" y="175" width="60" height="15" rx="3" fill="#f59e0b"/>
-            </svg>`,
-
-            // Q12: Teacher teaching pupils
-            teacher_teaching: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                <!-- Friendly Teacher -->
-                <circle cx="100" cy="70" r="22" fill="#fbcfe8"/>
-                <path d="M 75 70 C 75 40, 125 40, 125 70 C 125 100, 115 110, 100 110 C 85 110, 75 100, 75 70 Z" fill="#38bdf8"/>
-                <circle cx="100" cy="73" r="15" fill="#fbcfe8"/>
-                <circle cx="95" cy="72" r="2" fill="#334155"/>
-                <circle cx="105" cy="72" r="2" fill="#334155"/>
-                <path d="M 97 82 Q 100 86 103 82" stroke="#e11d48" stroke-width="2" fill="none"/>
-                <path d="M 80 110 L 120 110 L 130 200 L 70 200 Z" fill="#c084fc"/>
-                <!-- Pointer Stick pointing to A B C -->
-                <line x1="115" y1="130" x2="200" y2="80" stroke="#b45309" stroke-width="4" stroke-linecap="round"/>
-                <rect x="180" y="40" width="90" height="60" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="3"/>
-                <text x="195" y="78" font-size="22" fill="#ec4899" font-weight="bold" font-family="sans-serif">A B C</text>
-            </svg>`,
-
-            // Q13: Girl writing in Notebook
-            notebook_writing: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="150" cy="205" rx="90" ry="10" fill="#cbd5e1" opacity="0.4"/>
-                <!-- Open Lined Notebook -->
-                <rect x="60" y="60" width="180" height="120" rx="8" fill="#ffffff" stroke="#a7f3d0" stroke-width="4"/>
-                <line x1="150" y1="60" x2="150" y2="180" stroke="#6ee7b7" stroke-width="3"/>
-                <!-- Lined Pages -->
-                <line x1="80" y1="90" x2="135" y2="90" stroke="#bae6fd" stroke-width="2"/>
-                <line x1="80" y1="110" x2="135" y2="110" stroke="#bae6fd" stroke-width="2"/>
-                <line x1="80" y1="130" x2="135" y2="130" stroke="#bae6fd" stroke-width="2"/>
-                <line x1="165" y1="90" x2="220" y2="90" stroke="#bae6fd" stroke-width="2"/>
-                <line x1="165" y1="110" x2="220" y2="110" stroke="#bae6fd" stroke-width="2"/>
-                <!-- Hand holding Pencil writing -->
-                <g transform="translate(140, 70) rotate(20)">
-                    <rect x="0" y="0" width="12" height="70" fill="#facc15" rx="2"/>
-                    <polygon points="0,70 6,82 12,70" fill="#fde047"/>
-                    <polygon points="4,78 6,82 8,78" fill="#1e293b"/>
-                </g>
-            </svg>`,
-
-            // Q14: Teacher writing on Whiteboard
-            teacher_writing_wb: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                <!-- Large Whiteboard -->
-                <rect x="50" y="20" width="220" height="150" rx="8" fill="#ffffff" stroke="#475569" stroke-width="6"/>
-                <text x="70" y="70" font-size="20" fill="#2563eb" font-weight="bold" font-family="sans-serif">Good morning!</text>
-                <!-- Hand holding Marker touching board -->
-                <path d="M 210 180 Q 200 130 185 95" stroke="#fbcfe8" stroke-width="18" stroke-linecap="round" fill="none"/>
-                <rect x="178" y="75" width="14" height="28" fill="#2563eb" rx="3" transform="rotate(-15 178 75)"/>
-            </svg>`,
-
-            // Q15: Pupil putting book into Schoolbag
-            putting_book_in_bag: `<svg viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="150" cy="210" rx="85" ry="12" fill="#cbd5e1" opacity="0.4"/>
-                <!-- Open Backpack -->
-                <rect x="90" y="80" width="120" height="120" rx="25" fill="#a7f3d0" stroke="#059669" stroke-width="3"/>
-                <path d="M 100 80 C 100 50, 200 50, 200 80 Z" fill="#6ee7b7"/>
-                <!-- Book being inserted -->
-                <g transform="translate(115, 35)">
-                    <rect x="0" y="0" width="70" height="75" rx="5" fill="#f43f5e"/>
-                    <rect x="5" y="0" width="60" height="10" fill="#fef08a"/>
-                    <text x="15" y="45" font-size="12" fill="#ffffff" font-weight="bold">BOOK</text>
-                </g>
-                <!-- Hands guiding book -->
-                <circle cx="110" cy="70" r="10" fill="#fbcfe8"/>
-                <circle cx="190" cy="70" r="10" fill="#fbcfe8"/>
-            </svg>`
-        };
-
-        // 15 Specific Questions according to Topic 1 Specifications
-        const SCHOOL_QUESTIONS = [
-            {
-                id: 1,
-                vocab: "Schoolbag",
-                q: "What is this?",
-                choices: ["Schoolbag", "Pencil", "Chair"],
-                correct: 0,
-                explanation: "It is a schoolbag! We use it to carry our books to school.",
-                svgKey: "schoolbag"
-            },
-            {
-                id: 2,
-                vocab: "Pencil",
-                q: "What is the boy holding?",
-                choices: ["Eraser", "Pencil", "Ruler"],
-                correct: 1,
-                explanation: "The boy is holding a pencil with a yellow body and graphite tip.",
-                svgKey: "pencil_holding"
-            },
-            {
-                id: 3,
-                vocab: "Book",
-                q: "What is on the desk?",
-                choices: ["Book", "Notebook", "Pencil case"],
-                correct: 0,
-                explanation: "It is a book resting on the classroom desk.",
-                svgKey: "book"
-            },
-            {
-                id: 4,
-                vocab: "Ruler",
-                q: "What does the girl use to draw a straight line?",
-                choices: ["Pen", "Eraser", "Ruler"],
-                correct: 2,
-                explanation: "A ruler is transparent and straight with centimetre markings.",
-                svgKey: "ruler"
-            },
-            {
-                id: 5,
-                vocab: "Desk",
-                q: "Where is the book?",
-                choices: ["On the desk", "Under the chair", "In the bag"],
-                correct: 0,
-                explanation: "The book is resting visibly on top of the desk.",
-                svgKey: "book_on_desk"
-            },
-            {
-                id: 6,
-                vocab: "Whiteboard",
-                q: "What does the teacher write on?",
-                choices: ["Desk", "Whiteboard", "Chair"],
-                correct: 1,
-                explanation: "The teacher writes on a large classroom whiteboard with a marker.",
-                svgKey: "teacher_whiteboard"
-            },
-            {
-                id: 7,
-                vocab: "Pencil case",
-                q: "What is the girl opening?",
-                choices: ["Pencil case", "Schoolbag", "Notebook"],
-                correct: 0,
-                explanation: "She is opening a zippered pencil case filled with stationery.",
-                svgKey: "pencil_case"
-            },
-            {
-                id: 8,
-                vocab: "Chair",
-                q: "What do you sit on?",
-                choices: ["Table", "Desk", "Chair"],
-                correct: 2,
-                explanation: "We sit on a classroom chair.",
-                svgKey: "chair"
-            },
-            {
-                id: 9,
-                vocab: "Pen",
-                q: "What does the boy write with?",
-                choices: ["Pen", "Ruler", "Eraser"],
-                correct: 0,
-                explanation: "He is writing with a ballpoint pen.",
-                svgKey: "pen"
-            },
-            {
-                id: 10,
-                vocab: "Eraser",
-                q: "What do you use to remove pencil marks?",
-                choices: ["Ruler", "Eraser", "Pen"],
-                correct: 1,
-                explanation: "An eraser (rubber) cleans pencil marks off paper.",
-                svgKey: "eraser"
-            },
-            {
-                id: 11,
-                vocab: "Classroom",
-                q: "Where are the pupils?",
-                choices: ["In the classroom", "At home", "In the playground"],
-                correct: 0,
-                explanation: "The pupils are sitting at desks inside the primary school classroom.",
-                svgKey: "classroom"
-            },
-            {
-                id: 12,
-                vocab: "Teacher",
-                q: "Who teaches the pupils?",
-                choices: ["Student", "Teacher", "Pupil"],
-                correct: 1,
-                explanation: "The teacher explains the lesson at the front of the class.",
-                svgKey: "teacher_teaching"
-            },
-            {
-                id: 13,
-                vocab: "Notebook",
-                q: "What is the girl writing in?",
-                choices: ["Notebook", "Pencil case", "Schoolbag"],
-                correct: 0,
-                explanation: "She is writing in an open exercise notebook with lined pages.",
-                svgKey: "notebook_writing"
-            },
-            {
-                id: 14,
-                vocab: "Table",
-                q: "Where does the teacher write?",
-                choices: ["On the floor", "On the whiteboard", "On the window"],
-                correct: 1,
-                explanation: "The teacher writes directly on the whiteboard surface.",
-                svgKey: "teacher_writing_wb"
-            },
-            {
-                id: 15,
-                vocab: "Student",
-                q: "What is the boy putting away?",
-                choices: ["Chair", "Book", "Whiteboard"],
-                correct: 1,
-                explanation: "The pupil is putting his schoolbook away into his bag.",
-                svgKey: "putting_book_in_bag"
-            }
-        ];
-
-        class EnglishQuizApp {
-            constructor() {
-                this.playerName = '';
-                this.playerClass = '';
-                this.questions = [];
-                this.currentIndex = 0;
-                this.score = 0;
-                this.correctCount = 0;
-                this.incorrectCount = 0;
-                this.reviewData = [];
-                this.soundEnabled = true;
-                this.localResults = JSON.parse(localStorage.getItem('eq_school_results') || '[]');
-                this.remoteResults = [];
-
-                this.initSpeech();
-            }
-
-            initSpeech() {
-                this.synth = window.speechSynthesis;
-            }
-
-            speak(text) {
-                if (!this.soundEnabled || !this.synth) return;
-                try {
-                    this.synth.cancel();
-                    const utterance = new SpeechSynthesisUtterance(text);
-                    utterance.lang = 'en-GB';
-                    utterance.rate = 0.88;
-                    this.synth.speak(utterance);
-                } catch (e) {
-                    console.error("Speech Synthesis Error:", e);
-                }
-            }
-
-            toggleSound() {
-                this.soundEnabled = !this.soundEnabled;
-                const icon = document.getElementById('soundIcon');
-                if (this.soundEnabled) {
-                    icon.className = "fa-solid fa-volume-high";
-                    this.speak("Sound enabled");
-                } else {
-                    icon.className = "fa-solid fa-volume-xmark";
-                }
-            }
-
-            startQuizSetup() {
-                const nameInput = document.getElementById('pupilName').value.trim();
-                const classInput = document.getElementById('pupilClass').value.trim();
-
-                if (!nameInput) {
-                    this.showAlert("Please enter the pupil's name to start!");
-                    return;
-                }
-
-                this.playerName = nameInput;
-                this.playerClass = classInput || 'Year 1 / 2';
-
-                document.getElementById('screen-welcome').classList.add('hidden');
-                document.getElementById('screen-quiz').classList.remove('hidden');
-
-                this.startNewQuizSession();
-            }
-
-            goHome() {
-                document.getElementById('screen-welcome').classList.remove('hidden');
-                document.getElementById('screen-quiz').classList.add('hidden');
-                document.getElementById('screen-results').classList.add('hidden');
-            }
-
-            startNewQuizSession() {
-                this.currentIndex = 0;
-                this.score = 0;
-                this.correctCount = 0;
-                this.incorrectCount = 0;
-                this.reviewData = [];
-
-                // Load all 15 questions
-                this.questions = [...SCHOOL_QUESTIONS];
-                
-                this.loadQuestion();
-            }
-
-            loadQuestion() {
-                const q = this.questions[this.currentIndex];
-                
-                document.getElementById('currentQNum').innerText = this.currentIndex + 1;
-                const progressPct = ((this.currentIndex) / this.questions.length) * 100;
-                document.getElementById('progressBar').style.width = `${progressPct}%`;
-                document.getElementById('currentScore').innerText = this.score;
-
-                document.getElementById('questionText').innerText = q.q;
-
-                // Load Soft 3D SVG asset
-                const illBox = document.getElementById('illustrationBox');
-                illBox.innerHTML = SVG_3D_ASSETS[q.svgKey] || `<div class="text-slate-400 font-bold">Image Asset</div>`;
-
-                // Hide Feedback
-                const feedbackBox = document.getElementById('feedbackBox');
-                feedbackBox.classList.add('hidden');
-
-                // Prepare 3 Answer Choices (Randomized Positions)
-                const choicesContainer = document.getElementById('choicesContainer');
-                choicesContainer.innerHTML = '';
-
-                let choicesObj = q.choices.map((c, idx) => ({ text: c, isCorrect: idx === q.correct }));
-                choicesObj = this.shuffleArray(choicesObj);
-
-                choicesObj.forEach((choiceObj) => {
-                    const btn = document.createElement('button');
-                    btn.className = "bg-white border-2 border-pink-100 hover:border-pink-400 hover:bg-pink-50/50 text-slate-700 font-bold p-4 rounded-2xl shadow-sm text-base sm:text-lg transition bounce-hover flex items-center justify-center space-x-2";
-                    btn.innerHTML = `<span>${choiceObj.text}</span>`;
-                    btn.onclick = () => this.handleAnswer(choiceObj.isCorrect, q.choices[q.correct], choiceObj.text, q);
-                    choicesContainer.appendChild(btn);
-                });
-
-                // Auto speak question for pre-readers
-                this.speak(q.q);
-            }
-
-            playQuestionAudio() {
-                const q = this.questions[this.currentIndex];
-                this.speak(q.q);
-            }
-
-            handleAnswer(isCorrect, correctAnswerText, chosenAnswerText, questionObj) {
-                const feedbackBox = document.getElementById('feedbackBox');
-                const feedbackTitle = document.getElementById('feedbackTitle');
-                const feedbackExplanation = document.getElementById('feedbackExplanation');
-
-                // Disable all choices
-                const buttons = document.querySelectorAll('#choicesContainer button');
-                buttons.forEach(b => {
-                    b.disabled = true;
-                    b.classList.remove('bounce-hover');
-                    if (b.innerText.trim() === correctAnswerText) {
-                        b.classList.add('border-emerald-400', 'bg-emerald-50', 'text-emerald-700');
-                    } else if (b.innerText.trim() === chosenAnswerText && !isCorrect) {
-                        b.classList.add('border-rose-400', 'bg-rose-50', 'text-rose-700');
-                    }
-                });
-
-                this.reviewData.push({
-                    question: questionObj.q,
-                    vocab: questionObj.vocab,
-                    chosen: chosenAnswerText,
-                    correct: correctAnswerText,
-                    isCorrect: isCorrect
-                });
-
-                feedbackBox.classList.remove('hidden');
-
-                if (isCorrect) {
-                    this.score += 1;
-                    this.correctCount += 1;
-                    feedbackBox.className = "mt-5 p-4 rounded-2xl bg-emerald-50 border-2 border-emerald-200 text-emerald-900 transition-all";
-                    feedbackTitle.innerText = "Excellent! ⭐";
-                    feedbackExplanation.innerText = questionObj.explanation;
-                    this.speak("Excellent!");
-                } else {
-                    this.incorrectCount += 1;
-                    feedbackBox.className = "mt-5 p-4 rounded-2xl bg-rose-50 border-2 border-rose-200 text-rose-900 transition-all";
-                    feedbackTitle.innerText = "Try again! 💪";
-                    feedbackExplanation.innerText = `Correct answer: "${correctAnswerText}". ${questionObj.explanation}`;
-                    this.speak("Try again!");
-                }
-
-                document.getElementById('currentScore').innerText = this.score;
-            }
-
-            nextQuestion() {
-                this.currentIndex++;
-                if (this.currentIndex < this.questions.length) {
-                    this.loadQuestion();
-                } else {
-                    this.showResults();
-                }
-            }
-
-            showResults() {
-                document.getElementById('screen-quiz').classList.add('hidden');
-                document.getElementById('screen-results').classList.remove('hidden');
-
-                const total = this.questions.length;
-                const percentage = Math.round((this.score / total) * 100);
-
-                document.getElementById('resultPlayerSummary').innerText = `${this.playerName} (${this.playerClass}) • Topic 1: School`;
-                document.getElementById('resScore').innerText = `${this.score}/${total}`;
-                document.getElementById('resPercentage').innerText = `${percentage}%`;
-                document.getElementById('resCorrect').innerText = this.correctCount;
-                document.getElementById('resIncorrect').innerText = this.incorrectCount;
-
-                const msgBadge = document.getElementById('finalMessageBadge');
-                if (percentage >= 80) {
-                    msgBadge.className = "p-4 rounded-2xl font-bold text-sm mb-6 max-w-md mx-auto bg-emerald-50 text-emerald-800 border border-emerald-200 font-fun";
-                    msgBadge.innerHTML = "🏆 Excellent! You have mastered Topic 1: School!";
-                    this.speak("Excellent job! You passed with flying colours!");
-                } else if (percentage >= 50) {
-                    msgBadge.className = "p-4 rounded-2xl font-bold text-sm mb-6 max-w-md mx-auto bg-amber-50 text-amber-800 border border-amber-200 font-fun";
-                    msgBadge.innerHTML = "🌟 Good effort! Keep practicing school words!";
-                    this.speak("Good effort! Keep practicing!");
-                } else {
-                    msgBadge.className = "p-4 rounded-2xl font-bold text-sm mb-6 max-w-md mx-auto bg-blue-50 text-blue-800 border border-blue-200 font-fun";
-                    msgBadge.innerHTML = "💪 Try again! Practice makes perfect!";
-                    this.speak("Good try! Try again!");
-                }
-
-                // Render Detailed Review List
-                const reviewListContainer = document.getElementById('reviewListContainer');
-                reviewListContainer.innerHTML = '';
-                this.reviewData.forEach((rev, idx) => {
-                    const item = document.createElement('div');
-                    item.className = `p-3 rounded-xl border flex justify-between items-center text-xs sm:text-sm ${rev.isCorrect ? 'bg-emerald-50/60 border-emerald-200 text-emerald-950' : 'bg-rose-50/60 border-rose-200 text-rose-950'}`;
-                    item.innerHTML = `
-                        <div>
-                            <span class="font-bold">Q${idx+1} [${rev.vocab}]:</span> ${rev.question}<br>
-                            <span class="text-xs text-slate-500">Your answer: <b class="${rev.isCorrect ? 'text-emerald-600' : 'text-rose-600'}">${rev.chosen}</b> | Correct: <b>${rev.correct}</b></span>
-                        </div>
-                        <div class="ml-2">
-                            ${rev.isCorrect ? '<i class="fa-solid fa-circle-check text-emerald-500 text-lg"></i>' : '<i class="fa-solid fa-circle-xmark text-rose-500 text-lg"></i>'}
-                        </div>
-                    `;
-                    reviewListContainer.appendChild(item);
-                });
-
-                // Save record
-                const resultRecord = {
-                    name: this.playerName,
-                    pupilClass: this.playerClass,
-                    topic: "Topic 1: School",
-                    score: this.score,
-                    total: total,
-                    percentage: percentage,
-                    date: new Date().toLocaleDateString()
-                };
-
-                this.localResults.push(resultRecord);
-                localStorage.setItem('eq_school_results', JSON.stringify(this.localResults));
-
-                if (typeof window.saveResultToFirebase === 'function') {
-                    window.saveResultToFirebase(resultRecord);
-                }
-            }
-
-            restartQuiz() {
-                document.getElementById('screen-results').classList.add('hidden');
-                document.getElementById('screen-quiz').classList.remove('hidden');
-                this.startNewQuizSession();
-            }
-
-            showTeacherModal() {
-                document.getElementById('teacherModal').classList.remove('hidden');
-                this.renderTeacherDashboard();
-            }
-
-            hideTeacherModal() {
-                document.getElementById('teacherModal').classList.add('hidden');
-            }
-
-            syncRemoteResults(remoteList) {
-                this.remoteResults = remoteList;
-            }
-
-            renderTeacherDashboard() {
-                const tbody = document.getElementById('dashTableBody');
-                tbody.innerHTML = '';
-
-                let allResults = this.remoteResults.length > 0 ? this.remoteResults : this.localResults;
-
-                document.getElementById('dashTotalAttempts').innerText = allResults.length;
-
-                if (allResults.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-slate-400">No student assessment records found.</td></tr>`;
-                    document.getElementById('dashAvgScore').innerText = '0%';
-                    return;
-                }
-
-                let totalPct = 0;
-                allResults.forEach(r => {
-                    totalPct += (r.percentage || 0);
-                    const tr = document.createElement('tr');
-                    tr.className = "hover:bg-slate-50 transition border-b border-slate-100";
-                    tr.innerHTML = `
-                        <td class="p-3 font-semibold text-slate-700">${r.name || 'Anonymous'}</td>
-                        <td class="p-3 text-slate-500">${r.pupilClass || '-'}</td>
-                        <td class="p-3 font-bold text-pink-600">${r.score}/${r.total} (${r.percentage}%)</td>
-                        <td class="p-3 text-slate-400">${r.date || 'Today'}</td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-
-                const avg = Math.round(totalPct / allResults.length);
-                document.getElementById('dashAvgScore').innerText = `${avg}%`;
-            }
-
-            clearResults() {
-                this.localResults = [];
-                localStorage.removeItem('eq_school_results');
-                if (typeof window.clearFirebaseData === 'function') {
-                    window.clearFirebaseData();
-                }
-                this.renderTeacherDashboard();
-                this.showAlert("All records cleared!");
-            }
-
-            exportCSV() {
-                let allResults = this.remoteResults.length > 0 ? this.remoteResults : this.localResults;
-                if (allResults.length === 0) {
-                    this.showAlert("No data to export!");
-                    return;
-                }
-                let csv = "Pupil Name,Class,Topic,Score,Total,Percentage,Date\n";
-                allResults.forEach(r => {
-                    csv += `"${r.name}","${r.pupilClass}","Topic 1: School","${r.score}","${r.total}","${r.percentage}%","${r.date}"\n`;
-                });
-                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'topic_1_school_results.csv';
-                a.click();
-            }
-
-            showAlert(msg) {
-                const banner = document.createElement('div');
-                banner.className = "fixed bottom-5 right-5 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-xl z-50 text-xs font-bold flex items-center space-x-2";
-                banner.innerHTML = `<i class="fa-solid fa-circle-info text-pink-400"></i><span>${msg}</span>`;
-                document.body.appendChild(banner);
-                setTimeout(() => banner.remove(), 2500);
-            }
-
-            shuffleArray(array) {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                }
-                return array;
-            }
-        }
-
-        const app = new EnglishQuizApp();
-        window.app = app;
-    </script>
-</body>
-</html>
+<body>
+<header class="topbar no-print">
+ <div class="brand">
+  <div class="logo">🎒</div>
+  <div>
+   <h1>English Fun Worksheet Maker</h1>
+   <p>Year 1 • Pre-A1 English • Unit 1: At School</p>
+  </div>
+ </div>
+ <div class="actions">
+  <button class="btn blue" onclick="toggleAnswers()">👩‍🏫 Answer Key</button>
+  <button class="btn yellow" onclick="window.print()">🖨️ Print / Save PDF</button>
+  <button class="btn pink" onclick="resetWorksheet()">↻ Reset</button>
+ </div>
+</header>
+
+<main>
+<section class="intro no-print">
+ <div>
+  <span class="tag">✨ MALAYSIAN PRIMARY SCHOOL • YEAR 1</span>
+  <h2>UNIT 1: <span>AT SCHOOL</span> 🎨</h2>
+  <p>A colourful, picture-based worksheet with Listening, Speaking, Reading, Writing and Language Arts. Fill in pupil details, complete the questions, then print or save as PDF.</p>
+  <div class="fields">
+   <div class="field">
+    <label for="pupilName">Pupil's name</label>
+    <input id="pupilName" placeholder="e.g. Aina">
+   </div>
+   <div class="field">
+    <label for="pupilClass">Class</label>
+    <input id="pupilClass" placeholder="e.g. 1 Bestari">
+   </div>
+   <div class="field">
+    <label for="pupilDate">Date</label>
+    <input id="pupilDate" type="date">
+   </div>
+  </div>
+ </div>
+ <div class="hero" id="hero"></div>
+</section>
+
+<div id="worksheetHeader" style="display:none;align-items:center;justify-content:space-between;border:2px solid #333;border-radius:7px;padding:7px 10px;margin-bottom:5mm">
+ <div style="display:flex;align-items:center;gap:9px">
+  <span style="font-size:26px">🏫</span>
+  <strong style="font-size:22px">UNIT 1: AT SCHOOL</strong>
+ </div>
+ <div style="font-size:9pt;line-height:1.7">
+  Name: <span id="printName">____________</span><br>
+  Class: <span id="printClass">____________</span><br>
+  Date: <span id="printDate">____________</span>
+ </div>
+</div>
+
+<div class="toolbar no-print">
+ <div>
+  <h3>📚 Your worksheet</h3>
+  <span class="muted">25 questions • 25 marks • tick, circle and spell</span>
+ </div>
+ <div class="actions">
+  <button class="btn dark" onclick="checkAnswers()">Check Answers</button>
+  <button class="btn soft" onclick="toggleCompact()">Compact view</button>
+ </div>
+</div>
+
+<section class="section" id="secA">
+ <div class="head hb">
+  <span class="letter">A</span>
+  <div><h3>🔊 Listening</h3><p>Listen to and tick the correct picture.
